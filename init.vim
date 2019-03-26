@@ -39,13 +39,25 @@ set number
 " number of lines offset when jumping
 set scrolloff=2
 
-" Tab key enters 2 spaces
-" To enter a TAB character when `expandtab` is in effect,
-" CTRL-v-TAB
-set expandtab tabstop=4 shiftwidth=4 softtabstop=4 
+" Tab configuration
+set tabstop=4       " The width of a TAB is set to 4.
+set shiftwidth=4    " Indents will have a width of 4
+set softtabstop=4   " Sets the number of columns for a TAB
+set expandtab       " Expand TABs to spaces
+
+" Filetype specific tabs
+autocmd Filetype python setlocal expandtab tabstop=4 shiftwidth=4 softtabstop=4
+autocmd Filetype ruby setlocal expandtab tabstop=2 shiftwidth=2 softtabstop=2
+autocmd Filetype html setlocal expandtab tabstop=2 shiftwidth=2 softtabstop=2
+autocmd Filetype eruby setlocal expandtab tabstop=2 shiftwidth=2 softtabstop=2
+autocmd Filetype eruby.yaml setlocal expandtab tabstop=2 shiftwidth=2 softtabstop=2
+autocmd Filetype yaml setlocal expandtab tabstop=2 shiftwidth=2 softtabstop=2
 
 " Indent new line the same as the preceding line
 set autoindent
+
+" Map <Leader> to ','
+let mapleader = ","
 
 " statusline indicates insert or normal mode
 set showmode showcmd
@@ -88,29 +100,44 @@ highlight CursorLine ctermbg=None
 autocmd InsertEnter * highlight  CursorLine ctermbg=17 ctermfg=None
 autocmd InsertLeave * highlight  CursorLine ctermbg=None ctermfg=None
 
+" Enable syntax highlighting
 syntax enable
 
+" Map Ctrl+o to open NerdTree
 map <C-o> :NERDTreeToggle<CR>
 
 set noshowmode
 
-let g:lightline = {
-      \ 'colorscheme': 'gruvbox',
-      \ 'active': {
-      \   'left': [ [ 'mode', 'paste' ],
-      \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ]
-      \ },
-      \ 'component_function': {
-      \   'gitbranch': 'fugitive#head'
-      \ },
-      \ }
+"let g:lightline = {
+"      \ 'colorscheme': 'gruvbox',
+"      \ 'active': {
+"      \   'left': [ [ 'mode', 'paste' ],
+"      \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ]
+"      \ },
+"      \ 'component_function': {
+"      \   'gitbranch': 'fugitive#head'
+"      \ },
+"      \ }
 
-autocmd Filetype python setlocal expandtab tabstop=4 shiftwidth=4 softtabstop=4
-autocmd Filetype ruby setlocal expandtab tabstop=2 shiftwidth=2 softtabstop=2
-autocmd Filetype html setlocal expandtab tabstop=2 shiftwidth=2 softtabstop=2
-autocmd Filetype eruby setlocal expandtab tabstop=2 shiftwidth=2 softtabstop=2
-autocmd Filetype eruby.yaml setlocal expandtab tabstop=2 shiftwidth=2 softtabstop=2
-autocmd Filetype yaml setlocal expandtab tabstop=2 shiftwidth=2 softtabstop=2
+" Toggle paste mode with ,+z
+set pastetoggle=<leader>z
+
+" Shift+hjkl to change tabs
+noremap <S-l> gt
+noremap <S-h> gT
+" Ctrl+hjkl to change panes
+noremap <C-l> <C-w>l
+noremap <C-h> <C-w>h
+noremap <C-j> <C-w>j
+noremap <C-k> <C-w>k
+
+" Save file with ,+q
+noremap <leader>q :q<cr>
+
+" Save File with ,+s
+nnoremap <leader>s :w<cr>
+inoremap <leader>s <C-c>:w<cr>
+
 
 
 map <C-t><up> :tabr<cr>
@@ -134,18 +161,20 @@ Plugin 'terryma/vim-multiple-cursors'
 Plugin 'tpope/vim-eunuch'
 Plugin 'tpope/vim-surround'
 "Plugin 'w0rp/ale'
-Plugin 'itchyny/lightline.vim'
+"Plugin 'itchyny/lightline.vim'
 Plugin 'jiangmiao/auto-pairs'
 Plugin 'ervandew/supertab'
 Plugin 'tpope/vim-rails'
 "Plugin 'flazz/vim-colorschemes'
 Plugin 'morhetz/gruvbox'
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
 "Plugin 'sheerun/vim-polyglot'
+Plugin 'tmux-plugins/vim-tmux'
 call vundle#end()
 
 colorscheme gruvbox
 set background=dark
 
 filetype plugin indent on
-
 
