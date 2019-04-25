@@ -52,6 +52,9 @@ autocmd Filetype html setlocal expandtab tabstop=2 shiftwidth=2 softtabstop=2
 autocmd Filetype eruby setlocal expandtab tabstop=2 shiftwidth=2 softtabstop=2
 autocmd Filetype eruby.yaml setlocal expandtab tabstop=2 shiftwidth=2 softtabstop=2
 autocmd Filetype yaml setlocal expandtab tabstop=2 shiftwidth=2 softtabstop=2
+autocmd Filetype jsp setlocal expandtab tabstop=2 shiftwidth=2 softtabstop=2
+autocmd Filetype xml setlocal expandtab tabstop=2 shiftwidth=2 softtabstop=2
+autocmd Filetype vue setlocal expandtab tabstop=2 shiftwidth=2 softtabstop=2
 
 " Indent new line the same as the preceding line
 set autoindent
@@ -73,7 +76,7 @@ set showmatch
 set hlsearch incsearch ignorecase smartcase
 
 " As opposed to `wrap`
-"set nowrap
+set nowrap
 
 " http://vim.wikia.com/wiki/Set_working_directory_to_the_current_file
 set autochdir
@@ -84,18 +87,10 @@ set hidden
 " http://stackoverflow.com/questions/9511253/how-to-effectively-use-vim-wildmenu
 set wildmenu wildmode=list:longest,full
 
-" StatusLine always visible, display full path
-" http://learnvimscriptthehardway.stevelosh.com/chapters/17.html
-" set laststatus=2 statusline=%F
-
 " Use system clipboard
-" http://vim.wikia.com/wiki/Accessing_the_system_clipboard
 set clipboard=unnamedplus
 
 " CursorLine - sometimes autocmds are not performant; turn off if so
-" http://vim.wikia.com/wiki/Highlight_current_line
-" set cursorline
-" Normal mode
 highlight CursorLine ctermbg=None
 autocmd InsertEnter * highlight  CursorLine ctermbg=17 ctermfg=None
 autocmd InsertLeave * highlight  CursorLine ctermbg=None ctermfg=None
@@ -108,16 +103,7 @@ map <C-o> :NERDTreeToggle<CR>
 
 set noshowmode
 
-"let g:lightline = {
-"      \ 'colorscheme': 'gruvbox',
-"      \ 'active': {
-"      \   'left': [ [ 'mode', 'paste' ],
-"      \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ]
-"      \ },
-"      \ 'component_function': {
-"      \   'gitbranch': 'fugitive#head'
-"      \ },
-"      \ }
+let g:airline_powerline_fonts = 1
 
 " Toggle paste mode with ,+z
 set pastetoggle=<leader>z
@@ -125,6 +111,7 @@ set pastetoggle=<leader>z
 " Shift+hjkl to change tabs
 noremap <S-l> gt
 noremap <S-h> gT
+
 " Ctrl+hjkl to change panes
 noremap <C-l> <C-w>l
 noremap <C-h> <C-w>h
@@ -138,8 +125,6 @@ noremap <leader>q :q<cr>
 nnoremap <leader>s :w<cr>
 inoremap <leader>s <C-c>:w<cr>
 
-
-
 map <C-t><up> :tabr<cr>
 map <C-t><down> :tabl<cr>
 map <C-t><left> :tabp<cr>
@@ -149,7 +134,6 @@ set mouse=a
 
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
-
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'editorconfig/editorconfig-vim'
@@ -160,16 +144,13 @@ Plugin 'scrooloose/nerdtree'
 Plugin 'terryma/vim-multiple-cursors'
 Plugin 'tpope/vim-eunuch'
 Plugin 'tpope/vim-surround'
-"Plugin 'w0rp/ale'
-"Plugin 'itchyny/lightline.vim'
+Plugin 'w0rp/ale'
 Plugin 'jiangmiao/auto-pairs'
 Plugin 'ervandew/supertab'
 Plugin 'tpope/vim-rails'
-"Plugin 'flazz/vim-colorschemes'
 Plugin 'morhetz/gruvbox'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
-"Plugin 'sheerun/vim-polyglot'
 Plugin 'tmux-plugins/vim-tmux'
 call vundle#end()
 

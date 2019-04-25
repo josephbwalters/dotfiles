@@ -10,6 +10,7 @@ export ZSH="/Users/jwalters/.oh-my-zsh"
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
 
 ZSH_THEME="lambda-mod"
+# ZSH_THEME="powerlevel10k/powerlevel10k"
 SOLARIZED_THEME="dark"
 
 # Set list of themes to pick from when loading at random
@@ -130,6 +131,13 @@ alias tmuxn='tmux new -s dev'
 alias tmuxa='tmux attach -t dev'
 alias tmuxd='tmux detach'
 
+# Tomcat Start/Stop
+alias tomcatup='/Library/Tomcat9/bin/startup.sh'
+alias tomcatdown='/Library/Tomcat9/bin/shutdown.sh'
+
 
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+export PATH="/usr/local/opt/openssl/bin:$PATH"
+export PKG_CONFIG_PATH=/usr/local/opt/openssl/lib/pkgconfig:/usr/local/lib/pkgconfig
+
