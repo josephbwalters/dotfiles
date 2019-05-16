@@ -1,143 +1,77 @@
-# If you come from bash you might have to change your $PATH.
-# export PATH=$HOME/bin:/usr/local/bin:$PATH
-
 # Path to your oh-my-zsh installation.
 export ZSH="/Users/jwalters/.oh-my-zsh"
 
-# Set name of the theme to load --- if set to "random", it will
-# load a random theme each time oh-my-zsh is loaded, in which case,
-# to know which specific one was loaded, run: echo $RANDOM_THEME
-# See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-
+# Set ZSH theme
 ZSH_THEME="lambda-mod"
-# ZSH_THEME="powerlevel10k/powerlevel10k"
 SOLARIZED_THEME="dark"
 
-# Set list of themes to pick from when loading at random
-# Setting this variable when ZSH_THEME=random will cause zsh to load
-# a theme from this variable instead of looking in ~/.oh-my-zsh/themes/
-# If set to an empty array, this variable will have no effect.
-# ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" )
+# Case sensitive auto-completion enabled
+CASE_SENSITIVE="true"
 
-# Uncomment the following line to use case-sensitive completion.
- CASE_SENSITIVE="true"
-
-# Uncomment the following line to use hyphen-insensitive completion.
-# Case-sensitive completion must be off. _ and - will be interchangeable.
-# HYPHEN_INSENSITIVE="true"
-
-# Uncomment the following line to disable bi-weekly auto-update checks.
-# DISABLE_AUTO_UPDATE="true"
-
-# Uncomment the following line to change how often to auto-update (in days).
-# export UPDATE_ZSH_DAYS=13
-
-# Uncomment the following line to disable colors in ls.
-# DISABLE_LS_COLORS="true"
-
-# Uncomment the following line to disable auto-setting terminal title.
-# DISABLE_AUTO_TITLE="true"
-
-# Uncomment the following line to enable command auto-correction.
+# Auto-correction enabled
 ENABLE_CORRECTION="true"
 
-# Uncomment the following line to display red dots whilst waiting for completion.
+# Show that command is running
 COMPLETION_WAITING_DOTS="true"
 
-# Uncomment the following line if you want to disable marking untracked files
-# under VCS as dirty. This makes repository status check for large repositories
-# much, much faster.
-# DISABLE_UNTRACKED_FILES_DIRTY="true"
+# Speed up git tracking
+DISABLE_UNTRACKED_FILES_DIRTY="true"
 
-# Uncomment the following line if you want to change the command execution time
-# stamp shown in the history command output.
-# You can set one of the optional three formats:
-# "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
-# or set a custom format using the strftime function format specifications,
-# see 'man strftime' for details.
-# HIST_STAMPS="mm/dd/yyyy"
-
-# Would you like to use another custom folder than $ZSH/custom?
-# ZSH_CUSTOM=/path/to/new-custom-folder
-
-# Which plugins would you like to load?
-# Standard plugins can be found in ~/.oh-my-zsh/plugins/*
-# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
-# Example format: plugins=(rails git textmate ruby lighthouse)
-# Add wisely, as too many plugins slow down shell startup.
+# Standard plugins found here: ~/.oh-my-zsh/plugins/*
+# Custom plugins found here: ~/.oh-my-zsh/custom/plugins/
 plugins=(
+  rails
+  ruby
+  rake-fast
+  ripgrep
+  rbenv
+  bundler
   git
+  git-auto-fetch
+  yarn
   zsh-syntax-highlighting
   zsh-autosuggestions
   zsh-256color
+  zsh_reload
+  vscode
+  common-aliases
   osx
 )
 
 source $ZSH/oh-my-zsh.sh
 
-# User configuration
-
-# export MANPATH="/usr/local/man:$MANPATH"
-
-# You may need to manually set your language environment
-# export LANG=en_US.UTF-8
-
 # Preferred editor for local and remote sessions
- if [[ -n $SSH_CONNECTION ]]; then
-   export EDITOR='nvim'
- else
-   export EDITOR='nvim'
- fi
+if [[ -n $SSH_CONNECTION ]]; then
+  export EDITOR='nvim'
+else
+  export EDITOR='nvim'
+fi
 
-# Compilation flags
-# export ARCHFLAGS="-arch x86_64"
-
-# ssh
-# export SSH_KEY_PATH="~/.ssh/rsa_id"
-
-# Set personal aliases, overriding those provided by oh-my-zsh libs,
-# plugins, and themes. Aliases can be placed here, though oh-my-zsh
-# users are encouraged to define aliases within the ZSH_CUSTOM folder.
-# For a full list of active aliases, run `alias`.
-#
-# Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
-
+# Load fzf
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
-export PATH="$PATH:$HOME/.rvm/bin"
-export PATH="/usr/local/opt/postgresql@9.4/bin:$PATH"
-
-# List of custom alias
-# Navigation to TrueNorth workspace
-alias tn='cd ~/Documents/dev/TrueNorth'
-alias at='cd automated_testing'
-alias bs='cd compass_ae_business_suite'
-alias ae='cd compass_agile_enterprise'
-alias vc='cd vuejs_conversion'
-
-# Navigation to dev folder
-alias dev='cd ~/Documents/dev'
-
-# Editing and sourcing configs
-alias editv='nvim ~/.config/nvim/init.vim'
-alias editz='nvim ~/.zshrc'
-alias editt='nvim ~/.tmux.conf'
-
-# Tmux startup commands
-alias tmuxn='tmux new -s dev'
-alias tmuxa='tmux attach -t dev'
-alias tmuxd='tmux detach'
-
-# Tomcat Start/Stop
-alias tomcatup='/Library/Tomcat9/bin/startup.sh'
-alias tomcatdown='/Library/Tomcat9/bin/shutdown.sh'
-
-
-
+# Shell integration with iterm
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+
+# Misc configs for ssl/postgres
 export PATH="/usr/local/opt/openssl/bin:$PATH"
 export PKG_CONFIG_PATH=/usr/local/opt/openssl/lib/pkgconfig:/usr/local/lib/pkgconfig
+export PATH="/usr/local/opt/postgresql@9.4/bin:$PATH"
 
+# rbenv setup
+export PATH="$HOME/.rbenv/bin:$PATH"
+eval "$(rbenv init -)"
+
+# Aliases to simplify common commands
+alias tn='cd ~/Documents/TrueNorth'
+alias zshrc='${=EDITOR} ~/dotfiles/.zshrc'
+alias vimrc='${=EDITOR} ~/dotfiles/init.vim' 
+alias ocnc='open -a Google\ Chrome --args --disable-web-security --user-data-dir'
+
+# External Alias that come with some plugins
+# https://github.com/robbyrussell/oh-my-zsh/wiki/Plugin:git
+# https://github.com/robbyrussell/oh-my-zsh/tree/master/plugins/rails
+# https://github.com/robbyrussell/oh-my-zsh/tree/master/plugins/bundler
+# https://github.com/robbyrussell/oh-my-zsh/tree/master/plugins/yarn
+# https://github.com/robbyrussell/oh-my-zsh/tree/master/plugins/vscode
+# https://github.com/robbyrussell/oh-my-zsh/blob/master/plugins/common-aliases/common-aliases.plugin.zsh
