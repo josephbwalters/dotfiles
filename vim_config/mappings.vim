@@ -7,11 +7,11 @@ noremap ; :
 let mapleader = ","
 
 " Map Shift+o to open NerdTree
-map <S-o> :NERDTreeToggle<CR>
+map <C-o> :NERDTreeToggle<CR>
 
 " Searching for files or within files
-nnoremap <S-p> :Files<Cr>
-nnoremap <S-f> :Rg<Cr>
+nnoremap <C-p> :Files<Cr>
+nnoremap <C-f> :Rg<Cr>
 
 " Toggle paste mode with ,+z
 set pastetoggle=<leader>z

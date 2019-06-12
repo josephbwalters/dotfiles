@@ -23,5 +23,6 @@ Plugin 'vim-airline/vim-airline-themes'
 Plugin 'tmux-plugins/vim-tmux'
 Plugin 'Shougo/deoplete.nvim'
 Plugin 'jeffkreeftmeijer/vim-numbertoggle'
+Plugin 'posva/vim-vue'
 call vundle#end()
 filetype plugin indent on

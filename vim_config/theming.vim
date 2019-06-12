@@ -13,3 +13,7 @@ let g:airline_powerline_fonts = 1
 " Set themeing for nvim
 colorscheme gruvbox
 set background=dark
+
+let g:vue_disable_pre_processors=1
+autocmd FileType vue syntax sync fromstart
+autocmd BufRead,BufNewFile *.vue setlocal filetype=vue.html.javascript.css.less.pug
