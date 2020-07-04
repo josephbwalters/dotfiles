@@ -106,54 +106,12 @@ fi
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-# Map everything vi/vim to neovim
-alias v="nvim"
-alias vi="nvim"
-alias vim="nvim"
+# Source aliases
+source ~/Development/dotfiles/zsh/aliases.sh # personal/general ones
+source ~/Development/dotfiles/zsh/work_aliases.sh # work ones (I did this so I can easily update .zshrc
 
-# General Aliases
-alias c="clear"
-alias q="exit"
-alias gs="gst"
-alias s="source"
-alias zc="v ~/.zshrc"
-alias rld="s ~/.zshrc"
-alias vc="v ~/.config/nvim/init.vim"
-alias randhex="openssl rand -hex 64"
-alias dev="cd ~/Development"
-alias dotf="cd ~/Development/dotfiles"
-alias r="ruby"
-
-# Directory Garbage <3
-alias u="cd .."
-alias uu="u && u"
-alias u2="uu"
-alias uuu="uu && u"
-alias u3="uuu"
-alias uuuu="uuu && u"
-alias u4="uuuu"
-alias uuuuu="uuuu && u"
-alias u5="uuuuu"
-alias o="open ."
-alias desk="cd ~/Desktop"
-alias down="cd ~/Downloads"
-alias mkd="mkdir"
-alias ls="ls -G"
-alias l="ls -l"
-alias lc="wc -l"
-
-# Extra git stuff
-# Most git aliases are managed through zsh plugin
-alias gbr='git checkout $(git branch | fzf)'
-
-# Bundle aliases are loaded by zsh plugin
-
-# Work aliases
-alias nocors='open -n -a /Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --args --user-data-dir="/tmp/chrome_dev_test" --disable-web-security'
-
-# Stuff I dont have here cuz they are specific to my job 
-# Add aliases for your common work folders  
-# Add aliases for common work commands 
+# alias rs='be rails s' # handled by zsh plugin
+# alias rc='be rails c' # handled by zsh plugin
 
 # Load env software
 eval $(thefuck --alias)
@@ -167,4 +125,3 @@ export NVM_DIR="$HOME/.nvm"
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-a
