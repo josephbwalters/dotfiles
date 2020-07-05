@@ -57,7 +57,7 @@ Useful Software:
 ## Other
 
 Useful Links:
-
+- [Regex Tester](https://regexr.com/) - cuz regex is hard
 - [Devhints.io](https://devhints.io/) - An amazing cheatsheet website
 - [Fowler Design Patterns](https://martinfowler.com/eaaCatalog/index.html) - Design Patterns will save your life
 - [Hipsum](https://hipsum.co/) - generates ipsum nicely
