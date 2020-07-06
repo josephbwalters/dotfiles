@@ -6,6 +6,7 @@ alias vi="nvim"
 alias vim="nvim"
 
 # General Aliases
+alias f="fuck"
 alias c="clear"
 alias q="exit"
 alias gs="gst"
@@ -17,6 +18,11 @@ alias randhex="openssl rand -hex"
 alias dev="cd ~/Development"
 alias dotf="cd ~/Development/dotfiles"
 alias r="ruby"
+
+alias pipr="pip install -r requirements.txt"
+alias mvenv="python3 -m venv venv"
+alias svenv="s venv/bin/activate"
+alias msvenv="mvenv && svenv"
 
 # Directory Garbage <3
 alias u="cd .."
