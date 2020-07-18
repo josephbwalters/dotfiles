@@ -53,6 +53,7 @@ install_app 'autojump'
 install_app 'tmux'
 install_app 'task'
 install_app 'timewarrior'
+install_app 'stow'
 
 # Install node packages
 npm install --global is-up-cli

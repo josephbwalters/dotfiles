@@ -7,10 +7,13 @@ alias vi="nvim"
 alias vim="nvim"
 
 # Tasks
-alias tasks="vit" # cuz I don't like to think
+alias tasks="task" # cuz I don't like to think
+alias t="vit"
+
 
 # Git
-alias t="tig"
+alias gi="git"
+alias ti="tig"
 alias gbr='git checkout $(git branch | fzf)'
 # others covered by zsh plugin
 
