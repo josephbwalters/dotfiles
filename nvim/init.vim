@@ -43,6 +43,7 @@ Plug 'Yggdroot/indentLine'
 Plug 'avelino/vim-bootstrap-updater'
 Plug 'sheerun/vim-polyglot'
 Plug 'tpope/vim-rhubarb' " required by fugitive to :Gbrowse
+Plug 'tpope/vim-surround'
 
 " post install (yarn install | npm install) then load plugin only for editing supported files
 Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
@@ -563,7 +564,6 @@ let g:yats_host_keyword = 1
 let g:vue_disable_pre_processors=1
 " vim vue plugin
 let g:vim_vue_plugin_load_full_syntax = 1
-
 
 "*****************************************************************************
 "*****************************************************************************
