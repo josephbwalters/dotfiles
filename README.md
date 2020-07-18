@@ -19,7 +19,6 @@ Software Managers - I download all of my software using these - even GUIs:
 - Windows: [Chocolatey](https://chocolatey.org/)
 
 Browser: [Brave](https://brave.com/)
-
 Terminal: [iterm2](https://iterm2.com/)
 
 Shell: [Zsh](http://zsh.sourceforge.net/) with [Oh My Zsh](https://ohmyz.sh/) and [Powerlevel10k](https://github.com/romkatv/powerlevel10k)
@@ -53,16 +52,22 @@ Useful Software:
 - [Docker](https://www.docker.com/) - Containers are magic
 - [thefuck](https://github.com/nvbn/thefuck) - this is hilarious and actually useful
 - [SwaggerDocs](https://swagger.io/docs/) - Cuz API docs are important
-- [TaskWarrior Pomodoro](https://github.com/coddingtonbear/taskwarrior-pomodoro) - idk
+- [TaskWarrior](https://github.com/GothenburgBitFactory/taskwarrior)
+- [TimeWarrior](https://github.com/GothenburgBitFactory/timewarrior)
+- [VIT](https://github.com/scottkosty/vit)
+- [TaskWarrior Pomodoro](https://github.com/coddingtonbear/taskwarrior-pomodoro)
 - [Task-Time Hook](https://github.com/kostajh/taskwarrior-time-tracking-hook)
-- [TaskWarrior VIT](https://github.com/scottkosty/vit)
+- [tig](https://github.com/jonas/tig) - ez git history
+- [terjira](https://github.com/keepcosmos/terjira)
+- [autojump](https://github.com/wting/autojump)
+- [is-up](https://github.com/sindresorhus/is-up-cli)
+- [Task Vim](https://github.com/framallo/taskwarrior.vim) - if I need it
+- [VimWiki](https://github.com/vimwiki/vimwiki) - if I want it
+- [TaskVimWiki](https://github.com/teranex/vimwiki-tasks) - if I want it
 
 ## Other
 
 Useful Links:
-- [Task Vim](https://github.com/framallo/taskwarrior.vim) - if I need it
-- [VimWiki](https://github.com/vimwiki/vimwiki) - if I want it
-- [TaskVimWiki](https://github.com/teranex/vimwiki-tasks) - if I want it
 - [Regex Tester](https://regexr.com/) - cuz regex is hard
 - [Devhints.io](https://devhints.io/) - An amazing cheatsheet website
 - [Fowler Design Patterns](https://martinfowler.com/eaaCatalog/index.html) - Design Patterns will save your life
@@ -70,3 +75,4 @@ Useful Links:
 - [Cucumber](https://cucumber.io/) - BDD is important kiddos
 - [Smell -> Refactorings](https://www.industriallogic.com/wp-content/uploads/2005/09/smellstorefactorings.pdf) - Nice little guide for refactorings
 - [VimAwesome](https://vimawesome.com/) - Useful vim stuff
+
