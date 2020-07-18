@@ -130,6 +130,10 @@ filetype plugin indent on
 "*****************************************************************************
 "" Basic Setup
 "*****************************************************************************"
+
+"" Line Numbers
+set relativenumber
+
 "" Encoding
 set encoding=utf-8
 set fileencoding=utf-8
@@ -201,8 +205,6 @@ else
   let g:indentLine_concealcursor = 0
   let g:indentLine_char = '┆'
   let g:indentLine_faster = 1
-
-  
 endif
 
 
