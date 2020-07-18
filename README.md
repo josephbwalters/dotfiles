@@ -53,10 +53,16 @@ Useful Software:
 - [Docker](https://www.docker.com/) - Containers are magic
 - [thefuck](https://github.com/nvbn/thefuck) - this is hilarious and actually useful
 - [SwaggerDocs](https://swagger.io/docs/) - Cuz API docs are important
+- [TaskWarrior Pomodoro](https://github.com/coddingtonbear/taskwarrior-pomodoro) - idk
+- [Task-Time Hook](https://github.com/kostajh/taskwarrior-time-tracking-hook)
+- [TaskWarrior VIT](https://github.com/scottkosty/vit)
 
 ## Other
 
 Useful Links:
+- [Task Vim](https://github.com/framallo/taskwarrior.vim) - if I need it
+- [VimWiki](https://github.com/vimwiki/vimwiki) - if I want it
+- [TaskVimWiki](https://github.com/teranex/vimwiki-tasks) - if I want it
 - [Regex Tester](https://regexr.com/) - cuz regex is hard
 - [Devhints.io](https://devhints.io/) - An amazing cheatsheet website
 - [Fowler Design Patterns](https://martinfowler.com/eaaCatalog/index.html) - Design Patterns will save your life

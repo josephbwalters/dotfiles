@@ -1,12 +1,20 @@
 #!/bin/zsh
 
 # Map everything vi/vim to neovim
+alias editor="nvim"
 alias v="nvim"
 alias vi="nvim"
 alias vim="nvim"
 
+# Tasks
+alias tasks="vit" # cuz I don't like to think
+
+# Git
+alias t="tig"
+alias gbr='git checkout $(git branch | fzf)'
+# others covered by zsh plugin
+
 # General Aliases
-alias f="fuck"
 alias c="clear"
 alias q="exit"
 alias gs="gst"
@@ -18,6 +26,8 @@ alias randhex="openssl rand -hex"
 alias dev="cd ~/Development"
 alias dotf="cd ~/Development/dotfiles"
 alias r="ruby"
+alias isup="is-up"
+alias f="fuck" # iz dirty w0rd and I use this at work (O_O)
 
 alias pipr="pip install -r requirements.txt"
 alias mvenv="python3 -m venv venv"
@@ -41,8 +51,4 @@ alias mkd="mkdir"
 alias ls="ls -G"
 alias l="ls -l"
 alias lc="wc -l"
-
-# Extra git stuff
-# Most git aliases are managed through zsh plugin
-alias gbr='git checkout $(git branch | fzf)'
 

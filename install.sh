@@ -49,7 +49,17 @@ install_cask_app 'iterm2'
 install_cask_app 'visual-studio-code'
 install_app 'neovim'
 install_app 'git'
+install_app 'autojump'
+install_app 'tmux'
+install_app 'task'
+install_app 'timewarrior'
+
+# Install node packages
+npm install --global is-up-cli
 echo 'Install of all other applications - COMPLETE!'
+
+# Install Gems
+gem install terjira
 
 echo 'Installing ohmyzsh this will probably restart shell'
 sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"

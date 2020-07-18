@@ -117,11 +117,16 @@ source ~/Development/dotfiles/zsh/work_aliases.sh # work ones (I did this so I c
 eval $(thefuck --alias)
 eval "$(rbenv init -)"
 eval "$(pyenv init -)"
-export PATH="/usr/local/opt/postgresql@9.4/bin:$PATH"
+# export PATH="/usr/local/opt/postgresql@9.4/bin:$PATH"
+export sshdir=/Users/jwalters/.ssh
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
 [ -s "/usr/local/opt/nvm/etc/bash_completion.d/nvm" ] && . "/usr/local/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
 
+# Add autojump
+[ -f /usr/local/etc/profile.d/autojump.sh ] && . /usr/local/etc/profile.d/autojump.sh
+
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
