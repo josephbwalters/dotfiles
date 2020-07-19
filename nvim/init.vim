@@ -44,6 +44,7 @@ Plug 'avelino/vim-bootstrap-updater'
 Plug 'sheerun/vim-polyglot'
 Plug 'tpope/vim-rhubarb' " required by fugitive to :Gbrowse
 Plug 'tpope/vim-surround'
+Plug 'ngmy/vim-rubocop'
 
 " post install (yarn install | npm install) then load plugin only for editing supported files
 Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
@@ -185,7 +186,6 @@ set number
 
 let no_buffers_menu=1
 silent! colorscheme gruvbox
-
 
 set mouse=a
 set mousemodel=popup
@@ -397,9 +397,15 @@ let g:UltiSnipsJumpBackwardTrigger="<c-b>"
 let g:UltiSnipsEditSplit="vertical"
 
 " ale
-let g:ale_linters = {}
-let b:ale_fixers = ['prettier']
-let g:ale_fix_on_save = 1
+let g:ale_linters = {'ruby': ['rubocop']}
+let b:ale_fixers = {'javascript': ['prettier'], 'ruby':['rubocop']}
+let g:ale_fix_on_save = 1                    " setting for linter only run file changed
+let g:ale_lint_on_text_changed = 'never'     " setting for linter only run file changed
+let g:ale_ruby_rubocop_executable = 'bundle' " fix rubocop executor
+
+" RuboCop
+let g:vimrubocop_keymap = 0
+nmap <Leader>r :RuboCop --auto-correct<CR>
 
 " Tagbar
 nmap <silent> <F4> :TagbarToggle<CR>
@@ -489,10 +495,11 @@ let g:jedi#goto_assignments_command = "<leader>g"
 let g:jedi#goto_definitions_command = "<leader>d"
 let g:jedi#documentation_command = "K"
 let g:jedi#usages_command = "<leader>n"
-let g:jedi#rename_command = "<leader>r"
+" let g:jedi#rename_command = "<leader>r"
 let g:jedi#show_call_signatures = "0"
 let g:jedi#completions_command = "<C-Space>"
 let g:jedi#smart_auto_mappings = 0
+
 
 " ale
 :call extend(g:ale_linters, {

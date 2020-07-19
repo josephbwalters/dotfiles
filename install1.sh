@@ -27,23 +27,17 @@ install_app 'yarn'
 echo 'Setting up rbenv'
 rbenv init
 echo 'eval "$(rbenv init -)"' >> ~/.bash_profile
-echo 'Installing ruby v2.5.3'
-rbenv install 2.5.3
-echo 'Setting ruby v2.5.3 as global instance'
-rbenv global 2.5.3 # system ruby is stupid
-echo 'Installing bundler v2.1.4'
-gem install bundler -v ‘2.1.4’
-rbenv rehash # rerun this anytime you install new gems/ruby versions
 
 echo 'Updating system gems'
 gem update —system # something is being stupid so have to do this
 
 install_cask_app 'google-chrome'
+install_cask_app 'brave-browser'
+install_cask_app 'firefox-developer-edition'
 install_cask_app 'slack'
 install_cask_app 'zoomus'
 install_cask_app 'postman'
 install_app 'the_silver_searcher'
-install_app 'postgresql94'
 install_cask_app 'pgadmin4'
 install_cask_app 'iterm2'
 install_cask_app 'visual-studio-code'
@@ -55,6 +49,13 @@ install_app 'task'
 install_app 'timewarrior'
 install_app 'stow'
 
+# Postgres Install
+install_app 'postgresql'
+echo 'Setting up PostgreSQL'
+echo 'export PATH="/home/linuxbrew/.linuxbrew/opt/postgresql@9.6/bin:$PATH"' >> ~/.profile
+echo 'Starting service or postgres - will always run on login/restart';
+brew services start postgresql
+
 # Install node packages
 npm install --global is-up-cli
 echo 'Install of all other applications - COMPLETE!'
@@ -62,8 +63,13 @@ echo 'Install of all other applications - COMPLETE!'
 # Install Gems
 gem install terjira
 
-echo 'Installing ohmyzsh this will probably restart shell'
-sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/themes/powerlevel10k
-rm ~/.zshrc # Remove .zshrc in favor for symlink
-ln -s ~/Development/dotfiles/zsh/.zshrc .zshrc
+
+echo 'Installing ruby v2.5.3'
+rbenv install 2.5.3
+echo 'Setting ruby v2.5.3 as global instance'
+rbenv global 2.5.3 # system ruby is stupid
+echo 'Installing bundler v2.1.4'
+gem install bundler -v ‘2.1.4’
+rbenv rehash # rerun this anytime you install new gems/ruby versions
+
+
