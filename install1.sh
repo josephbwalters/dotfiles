@@ -40,7 +40,7 @@ install_cask_app 'postman'
 install_app 'the_silver_searcher'
 install_cask_app 'pgadmin4'
 install_cask_app 'iterm2'
-install_cask_app 'visual-studio-code'
+install_cask_app 'jetbrains-toolbox'
 install_app 'neovim'
 install_app 'git'
 install_app 'autojump'
@@ -48,6 +48,9 @@ install_app 'tmux'
 install_app 'task'
 install_app 'timewarrior'
 install_app 'stow'
+
+# I switched back to vim so hiding vscode ;)
+# install_cask_app 'visual-studio-code'
 
 # Postgres Install
 install_app 'postgresql'
