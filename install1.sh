@@ -25,8 +25,9 @@ nvm install v11.7.0
 install_app 'yarn'
 
 echo 'Setting up rbenv'
+install_app rbenv
 rbenv init
-echo 'eval "$(rbenv init -)"' >> ~/.bash_profile
+# echo 'eval "$(rbenv init -)"' >> ~/.bash_profile
 
 echo 'Updating system gems'
 gem update —system # something is being stupid so have to do this
@@ -48,6 +49,13 @@ install_app 'tmux'
 install_app 'task'
 install_app 'timewarrior'
 install_app 'stow'
+install_app 'pyenv'
+install_app 'thefuck'
+
+# Python config
+pyenv install 3.8.3
+pyenv global 3.8.3
+pip install -r ~/Development/dotfiles/requirements.txt
 
 # I switched back to vim so hiding vscode ;)
 # install_cask_app 'visual-studio-code'
@@ -66,13 +74,6 @@ echo 'Install of all other applications - COMPLETE!'
 # Install Gems
 gem install terjira
 
-
-echo 'Installing ruby v2.5.3'
-rbenv install 2.5.3
-echo 'Setting ruby v2.5.3 as global instance'
-rbenv global 2.5.3 # system ruby is stupid
-echo 'Installing bundler v2.1.4'
-gem install bundler -v ‘2.1.4’
-rbenv rehash # rerun this anytime you install new gems/ruby versions
+# Restart Shell
 
 
