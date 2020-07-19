@@ -51,6 +51,7 @@ install_app 'timewarrior'
 install_app 'stow'
 install_app 'pyenv'
 install_app 'thefuck'
+install_cask_app 'font-fira-code'
 
 # Python config
 pyenv install 3.8.3
