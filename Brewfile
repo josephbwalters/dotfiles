@@ -26,6 +26,7 @@ brew 'the_silver_searcher'
 brew 'thefuck'
 brew 'timewarrior'
 brew 'tmux'
+brew 'ranger'
 
 # Apps
 cask "istat-menus"

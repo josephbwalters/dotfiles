@@ -52,6 +52,6 @@ alias desk="cd ~/Desktop"
 alias down="cd ~/Downloads"
 alias mkd="mkdir"
 alias ls="ls -G"
-alias l="ls -l"
+alias l="ls -lt"
 alias lc="wc -l"
 
