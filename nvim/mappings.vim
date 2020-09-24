@@ -26,6 +26,12 @@ nnoremap <silent> <S-t> :tabnew<CR>
 "" Set working directory
 nnoremap <leader>. :lcd %:p:h<CR>
 
+"" Yank filepath
+nnor ,yf :let @*=expand("%:p")<CR>
+
+"" Yank filename
+nnor ,fn :let @*=expand("%")<CR>
+
 "" Opens an edit command with the path of the currently edited file filled in
 noremap <Leader>e :e <C-R>=expand("%:p:h") . "/" <CR>
 

@@ -82,6 +82,7 @@ nnoremap <silent> <leader>sh :terminal<CR>
 "*****************************************************************************
 " remove trailing whitespaces
 command! FixWhitespace :%s/\s\+$//e
+command! FTV :set ft=vue
 
 "*****************************************************************************
 "" Functions
