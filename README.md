@@ -1,6 +1,15 @@
 # dotfiles
 
 ## Install
+### MacOS
+1. Clone dotfiles
+2. `cd dotfiles/installers/mac`
+3. Run install scripts in order!
+
+### Linux/WSL
+1. Clone dotfiles
+2. `cd dotfiles/installers/linux`
+3. Run install scripts in order!
 
 There is an install script included in the repo that will run everything up it will do the following:
 

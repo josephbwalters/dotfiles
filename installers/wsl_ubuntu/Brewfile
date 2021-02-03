@@ -1,0 +1,18 @@
+tap "homebrew/bundle"
+tap "homebrew/core"
+tap "schniz/tap"
+
+# CLI Stuff
+brew "htop"
+brew "neofetch"
+brew "neovim"
+brew "nvm"
+brew "rbenv"
+brew "ripgrep"
+brew "tldr"
+brew "yarn"
+brew 'autojump'
+brew 'pyenv'
+brew 'stow'
+brew 'the_silver_searcher'
+brew 'thefuck'
