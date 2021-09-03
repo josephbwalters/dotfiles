@@ -24,6 +24,7 @@ If you want a GUI instead of CLI you can install [Chocolatey GUI](https://docs.c
 # Installing Software
 ```bash
 # Package managers
+choco feature enable -n allowGlobalConfirmation
 choco install chocolateygui
 
 # Development
@@ -34,6 +35,11 @@ choco install docker-desktop
 choco install git
 choco install microsoft-windows-terminal
 choco install nvm
+choco install yarn
+
+# Databases
+choco install postgresql
+choco install pgadmin4
 
 # Diagramming
 choco install visualparadigm-ce
