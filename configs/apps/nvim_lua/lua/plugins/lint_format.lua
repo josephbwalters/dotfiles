@@ -13,7 +13,7 @@ return {
     },
     keys = { { "<leader>cf", function() require("conform").format({ async = true }) end, desc = "Format buffer" } },
   },
-  -- Linting
+   -- Linting
   {
     "mfussenegger/nvim-lint",
     config = function()

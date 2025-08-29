@@ -17,6 +17,7 @@ require("lazy").setup({
   { import = "plugins.lsp" },
   { import = "plugins.start" },
   { import = "plugins.lint_format" },
+  { import = "plugins.navigation" },
 }, {
   ui = { border = "rounded" },
   change_detection = { notify = false },
