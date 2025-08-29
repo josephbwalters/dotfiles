@@ -12,6 +12,12 @@ opt.hidden = true
 opt.swapfile = false
 opt.scrolloff = 4
 opt.sidescrolloff = 8
+vim.opt.clipboard = "unnamedplus"
+
+vim.opt.foldmethod = "expr"
+vim.opt.foldexpr   = "nvim_treesitter#foldexpr()"
+vim.opt.foldenable = true
+vim.opt.foldlevel  = 99
 
 -- Indent
 opt.expandtab = true

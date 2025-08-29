@@ -18,6 +18,8 @@ require("lazy").setup({
   { import = "plugins.start" },
   { import = "plugins.lint_format" },
   { import = "plugins.navigation" },
+  { import = "plugins.indent-blankline" },
+  { import = "plugins.glow" },
 }, {
   ui = { border = "rounded" },
   change_detection = { notify = false },
