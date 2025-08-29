@@ -41,7 +41,7 @@ alias mv='mv -i'
 
 # Git shortcuts
 alias g='git'
-alias gs='git status -sb'
+# alias gs='git status -sb'
 alias ga='git add -A'
 alias gc='git commit -v'
 alias gco='git checkout'
@@ -82,6 +82,8 @@ tmux attach -t base 2>/dev/null || tmux new -s base
 fi
 fi
 
+
+eval "$(luarocks --lua-version=5.4 path --bin)"
 #### Optional: load per-machine aliases ####
 # If your files are named *.sh, source those; otherwise use the dotfiles you actually have.
 [ -f "$HOME/Development/dotfiles/configs/apps/zsh/aliases.sh" ] && source "$HOME/Development/dotfiles/configs/apps/zsh/aliases.sh"
