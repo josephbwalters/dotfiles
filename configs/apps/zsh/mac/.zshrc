@@ -35,8 +35,8 @@ else
 fi
 
 # -------- Aliases (guarded loads) --------
-[[ -f ~/Development/dotfiles/zsh/aliases.sh ]] && source ~/Development/dotfiles/zsh/aliases.sh
-[[ -f ~/Development/dotfiles/zsh/work_aliases.sh ]] && source ~/Development/dotfiles/zsh/work_aliases.sh
+[[ -f ~/Development/dotfiles/configs/apps/zsh/aliases.sh ]] && source ~/Development/dotfiles/configs/apps/zsh/aliases.sh
+[[ -f ~/Development/dotfiles/configs/apps/zsh/work_aliases.sh ]] && source ~/Development/dotfiles/configs/apps/zsh/work_aliases.sh
 
 # -------- Common paths / env --------
 export sshdir="$HOME/.ssh"

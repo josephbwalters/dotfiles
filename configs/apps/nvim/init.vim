@@ -8,7 +8,7 @@ let vimplug_exists=expand('~/.config/nvim/autoload/plug.vim')
 let g:vim_bootstrap_langs = "html,javascript,python,ruby,typescript"
 let g:vim_bootstrap_editor = "nvim"				" nvim or vim
 
-source ~/Development/dotfiles/nvim/plugins.vim
+source ~/Development/dotfiles/configs/apps/nvim/plugins.vim
 
 " Required:
 filetype plugin indent on
@@ -67,15 +67,15 @@ let g:session_command_aliases = 1
 "*****************************************************************************
 "" Config Files
 "*****************************************************************************
-source ~/Development/dotfiles/nvim/ui.vim
-source ~/Development/dotfiles/nvim/abbrev.vim
-source ~/Development/dotfiles/nvim/filetypes.vim
+source ~/Development/dotfiles/configs/apps/nvim/ui.vim
+source ~/Development/dotfiles/configs/apps/nvim/abbrev.vim
+source ~/Development/dotfiles/configs/apps/nvim/filetypes.vim
 
-source ~/Development/dotfiles/nvim/plugins/airline.vim
-source ~/Development/dotfiles/nvim/plugins/nerdtree.vim
-source ~/Development/dotfiles/nvim/plugins/grep.vim
-source ~/Development/dotfiles/nvim/plugins/ale.vim
-source ~/Development/dotfiles/nvim/plugins/startify.vim
+source ~/Development/dotfiles/configs/apps/nvim/plugins/airline.vim
+source ~/Development/dotfiles/configs/apps/nvim/plugins/nerdtree.vim
+source ~/Development/dotfiles/configs/apps/nvim/plugins/grep.vim
+source ~/Development/dotfiles/configs/apps/nvim/plugins/ale.vim
+source ~/Development/dotfiles/configs/apps/nvim/plugins/startify.vim
 
 " terminal emulation
 nnoremap <silent> <leader>sh :terminal<CR>
@@ -102,7 +102,7 @@ endif
 "*****************************************************************************
 
 " Load mappings
-source ~/Development/dotfiles/nvim/mappings.vim
+source ~/Development/dotfiles/configs/apps/nvim/mappings.vim
 
 
 "" Include user's local vim config
