@@ -1,137 +1,144 @@
-# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
-# Initialization code that may require console input (password prompts, [y/n]
-# confirmations, etc.) must go above this block; everything else may go below.
+
+# -------- Fast start timer (optional) --------
+# echo "Starting up..."
+# start_time=$(date +%s)
+
+# -------- PATH (put sbin once) --------
+export PATH="/usr/local/sbin:$PATH"
+
+# -------- P10k instant prompt (keep at very top) --------
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
-# If you come from bash you might have to change your $PATH.
-# export PATH=$HOME/bin:/usr/local/bin:$PATH
-
-# Path to your oh-my-zsh installation.
-export ZSH="/Users/jwalters/.oh-my-zsh"
-
-# Set name of the theme to load --- if set to "random", it will
-# load a random theme each time oh-my-zsh is loaded, in which case,
-# to know which specific one was loded, run: echo $RANDOM_THEME
-# See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-# ZSH_THEME="robbyrussell"
+# -------- Oh My Zsh --------
+export ZSH="$HOME/.oh-my-zsh"
 ZSH_THEME="powerlevel10k/powerlevel10k"
+export UPDATE_ZSH_DAYS=14        # fewer update checks = less overhead
+unset ENABLE_CORRECTION          # correctness prompts cost latency
 
-# Set list of themes to pick from when loading at random
-# Setting this variable when ZSH_THEME=random will cause zsh to load
-# a theme from this variable instead of looking in ~/.oh-my-zsh/themes/
-# If set to an empty array, this variable will have no effect.
-# ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" )
+# Keep plugins minimal; heavy ones replaced by lazy loaders below
+plugins=(git fzf ripgrep tmux autojump)
+source "$ZSH/oh-my-zsh.sh"
 
-# Uncomment the following line to use case-sensitive completion.
-# CASE_SENSITIVE="true"
+# -------- Fast completion with cache --------
+autoload -Uz compinit
+mkdir -p ~/.cache/zsh
+compinit -d ~/.cache/zcompdump-$ZSH_VERSION -C
+zstyle ':completion:*' rehash true
 
-# Uncomment the following line to use hyphen-insensitive completion.
-# Case-sensitive completion must be off. _ and - will be interchangeable.
-# HYPHEN_INSENSITIVE="true"
-
-# Uncomment the following line to disable bi-weekly auto-update checks.
-# DISABLE_AUTO_UPDATE="true"
-
-# Uncomment the following line to automatically update without prompting.
-# DISABLE_UPDATE_PROMPT="true"
-
-# Uncomment the following line to change how often to auto-update (in days).
-export UPDATE_ZSH_DAYS=3
-
-# Uncomment the following line if pasting URLs and other text is messed up.
-# DISABLE_MAGIC_FUNCTIONS=true
-
-# Uncomment the following line to disable colors in ls.
-# DISABLE_LS_COLORS="true"
-
-# Uncomment the following line to disable auto-setting terminal title.
-# DISABLE_AUTO_TITLE="true"
-
-# Uncomment the following line to enable command auto-correction.
-ENABLE_CORRECTION="true"
-
-# Uncomment the following line to display red dots whilst waiting for completion.
-# COMPLETION_WAITING_DOTS="true"
-
-# Uncomment the following line if you want to disable marking untracked files
-# under VCS as dirty. This makes repository status check for large repositories
-# much, much faster.
-# DISABLE_UNTRACKED_FILES_DIRTY="true"
-
-# Uncomment the following line if you want to change the command execution time
-# stamp shown in the history command output.
-# You can set one of the optional three formats:
-# "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
-# or set a custom format using the strftime function format specifications,
-# see 'man strftime' for details.
-# HIST_STAMPS="mm/dd/yyyy"
-
-# Would you like to use another custom folder than $ZSH/custom?
-# ZSH_CUSTOM=/path/to/new-custom-folder
-
-# Which plugins would you like to load?
-# Standard plugins can be found in ~/.oh-my-zsh/plugins/*
-# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
-# Example format: plugins=(rails git textmate ruby lighthouse)
-# Add wisely, as too many plugins slow down shell startup.
-plugins=(rails git bundler nvm fzf ripgrep yarn tmux autojump git-auto-fetch taskwarrior thefuck )
-# add zsh-autosuggestions if reasonable - its actually more annoying to me than anything
-# can add vi-mode to above if you dare
-
-source $ZSH/oh-my-zsh.sh
-
-# User configuration
-
-# export MANPATH="/usr/local/man:$MANPATH"
-
-# You may need to manually set your language environment
-# export LANG=en_US.UTF-8
-
-# Preferred editor for local and remote sessions
+# -------- Editor --------
 if [[ -n $SSH_CONNECTION ]]; then
   export EDITOR='vim'
 else
   export EDITOR='nvim'
 fi
 
-# Compilation flags
-# export ARCHFLAGS="-arch x86_64"
+# -------- Aliases (guarded loads) --------
+[[ -f ~/Development/dotfiles/zsh/aliases.sh ]] && source ~/Development/dotfiles/zsh/aliases.sh
+[[ -f ~/Development/dotfiles/zsh/work_aliases.sh ]] && source ~/Development/dotfiles/zsh/work_aliases.sh
 
-# Set personal aliases, overriding those provided by oh-my-zsh libs,
-# plugins, and themes. Aliases can be placed here, though oh-my-zsh
-# users are encouraged to define aliases within the ZSH_CUSTOM folder.
-# For a full list of active aliases, run `alias`.
-#
-# Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
-
-# Source aliases
-source ~/Development/dotfiles/zsh/aliases.sh # personal/general ones
-source ~/Development/dotfiles/zsh/work_aliases.sh # work ones (I did this so I can easily update .zshrc
-
-# alias rs='be rails s' # handled by zsh plugin
-# alias rc='be rails c' # handled by zsh plugin
-
-# Load env software
-eval $(thefuck --alias)
-eval "$(rbenv init -)"
-eval "$(pyenv init -)"
-# export PATH="/usr/local/opt/postgresql@9.4/bin:$PATH"
-export sshdir=/Users/jwalters/.ssh
-
-export NVM_DIR="$HOME/.nvm"
-[ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
-[ -s "/usr/local/opt/nvm/etc/bash_completion.d/nvm" ] && . "/usr/local/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
-
-# Add autojump
-[ -f /usr/local/etc/profile.d/autojump.sh ] && . /usr/local/etc/profile.d/autojump.sh
-
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+# -------- Common paths / env --------
+export sshdir="$HOME/.ssh"
+export PATH="$HOME/.poetry/bin:$PATH"
 
 
-test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+# Perl local::lib (safe quoting; no nested quotes)
+export PATH="$HOME/perl5/bin:$PATH"
+export PERL5LIB="$HOME/perl5/lib/perl5${PERL5LIB:+:$PERL5LIB}"
+export PERL_LOCAL_LIB_ROOT="$HOME/perl5${PERL_LOCAL_LIB_ROOT:+:$PERL_LOCAL_LIB_ROOT}"
+export PERL_MB_OPT="--install_base=$HOME/perl5"
+export PERL_MM_OPT="INSTALL_BASE=$HOME/perl5"
 
+# --- thefuck: lazy and non-recursive ---
+# Remove any older alias/function to avoid collisions
+unalias fuck 2>/dev/null
+unfunction fuck 2>/dev/null
+
+_load_thefuck() {
+  # One-time bootstrap: define `fix` instead of `fuck`
+  # so we never redefine our stub.
+  eval "$(thefuck --alias fix)"    # creates alias/function named `fix`
+  unfunction _load_thefuck 2>/dev/null
+}
+
+# Users still type `fuck`; we load once, then proxy to `fix`
+fuck() {
+  command -v thefuck >/dev/null 2>&1 || { echo "thefuck not installed"; return 127; }
+  typeset -f _load_thefuck >/dev/null && _load_thefuck
+  fix "$@"
+}
+
+# Optional: hot-load on Ctrl+F (no recursion)
+bindkey -s '^F' '_load_thefuck\n'
+
+
+# nvm — defer until node/npm/npx/nvm is first invoked
+lazy_load_nvm() {
+  unset -f nvm node npm npx
+  export NVM_DIR="$HOME/.nvm"
+  if [[ -s "/usr/local/opt/nvm/nvm.sh" ]]; then
+    . "/usr/local/opt/nvm/nvm.sh"
+  elif [[ -s "$NVM_DIR/nvm.sh" ]]; then
+    . "$NVM_DIR/nvm.sh"
+  fi
+}
+nvm() { lazy_load_nvm; nvm "$@"; }
+node(){ lazy_load_nvm; node "$@"; }
+npm() { lazy_load_nvm; npm "$@"; }
+npx() { lazy_load_nvm; npx "$@"; }
+
+# pyenv — defer until python/pip/pyenv is used
+lazy_load_pyenv() {
+  unset -f pyenv python python3 pip pip3
+  command -v pyenv >/dev/null 2>&1 && eval "$(pyenv init -)"
+}
+pyenv()   { lazy_load_pyenv; pyenv "$@"; }
+python()  { lazy_load_pyenv; python "$@"; }
+python3() { lazy_load_pyenv; python3 "$@"; }
+pip()     { lazy_load_pyenv; pip "$@"; }
+pip3()    { lazy_load_pyenv; pip3 "$@"; }
+
+# rbenv — defer until ruby/gem/bundle/rbenv is used
+lazy_load_rbenv() {
+  unset -f rbenv ruby gem bundle
+  command -v rbenv >/dev/null 2>&1 && eval "$(rbenv init -)"
+}
+rbenv() { lazy_load_rbenv; rbenv "$@"; }
+ruby()  { lazy_load_rbenv; ruby "$@"; }
+gem()   { lazy_load_rbenv; gem "$@"; }
+bundle(){ lazy_load_rbenv; bundle "$@" ; }
+
+# jenv — defer until jenv/java/javac is used
+export PATH="$HOME/.jenv/bin:$PATH"
+lazy_load_jenv() {
+  unset -f jenv java javac
+  command -v jenv >/dev/null 2>&1 && eval "$(jenv init -)"
+}
+jenv()  { lazy_load_jenv; jenv "$@"; }
+java()  { lazy_load_jenv; java "$@"; }
+javac() { lazy_load_jenv; javac "$@" ; }
+
+# autojump (guarded; fast)
+[[ -f /usr/local/etc/profile.d/autojump.sh ]] && . /usr/local/etc/profile.d/autojump.sh
+
+# -------- Prompt config --------
+[[ -f ~/.p10k.zsh ]] && source ~/.p10k.zsh
+
+# -------- Deferred extras (load after prompt) --------
+# iTerm2 integration and gcloud completion are non-critical at T0; load on precmd
+defer_iterm() { [[ -e "$HOME/.iterm2_shell_integration.zsh" ]] && source "$HOME/.iterm2_shell_integration.zsh"; }
+defer_gcloud() {
+  [[ -f "$HOME/google-cloud-sdk/path.zsh.inc" ]] && . "$HOME/google-cloud-sdk/path.zsh.inc"
+  [[ -f "$HOME/google-cloud-sdk/completion.zsh.inc" ]] && . "$HOME/google-cloud-sdk/completion.zsh.inc"
+}
+precmd_functions+=defer_iterm
+precmd_functions+=defer_gcloud
+
+# -------- Optional: compile configs for tiny gains --------
+# [[ -f ~/.zshrc ]] && zcompile ~/.zshrc
+# [[ -f ~/.p10k.zsh ]] && zcompile ~/.p10k.zsh
+
+# end_time=$(date +%s)
+# echo "Ready! Time elapsed: $(($end_time - $start_time)) seconds"
+ # echo "Time elapsed from alias to end: $(($end_time - $start_time_alias)) seconds"

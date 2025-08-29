@@ -1,4 +1,4 @@
-" vim-bootstrap 
+" vim-bootstrap
 
 "*****************************************************************************
 "" Vim-PLug core
@@ -37,6 +37,9 @@ set expandtab
 
 "" Map leader to ,
 let mapleader=','
+
+"" Disable Perl Provider
+let g:loaded_perl_provider = 0
 
 "" Enable hidden buffers
 set hidden
@@ -106,4 +109,3 @@ source ~/Development/dotfiles/nvim/mappings.vim
 if filereadable(expand("~/.config/nvim/local_init.vim"))
   source ~/.config/nvim/local_init.vim
 endif
-
