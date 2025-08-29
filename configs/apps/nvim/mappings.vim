@@ -146,7 +146,8 @@ let g:airline#extensions#virtualenv#enabled = 1
 
 " Syntax highlight
 " Default highlight is better than polyglot
-let g:polyglot_disabled = ['python']
+" this was moved to init vim!
+" let g:polyglot_disabled = ['python']
 let python_highlight_all = 1
 
 " ruby
@@ -198,3 +199,5 @@ let g:vue_disable_pre_processors=1
 " vim vue plugin
 let g:vim_vue_plugin_load_full_syntax = 1
 
+"kite enable
+let g:kite_auto_complete=1

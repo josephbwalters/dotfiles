@@ -31,7 +31,10 @@ Plug 'majutsushi/tagbar'
 Plug 'w0rp/ale'
 Plug 'Yggdroot/indentLine'
 Plug 'avelino/vim-bootstrap-updater'
+
+let g:polyglot_disabled = ['python']
 Plug 'sheerun/vim-polyglot'
+
 Plug 'tpope/vim-rhubarb' " required by fugitive to :Gbrowse
 Plug 'tpope/vim-surround'
 Plug 'ngmy/vim-rubocop'
@@ -106,6 +109,9 @@ Plug 'HerringtonDarkholme/yats.vim'
 Plug 'posva/vim-vue'
 Plug 'leafOfTree/vim-vue-plugin'
 
+" kite
+Plug 'kiteco/vim-plugin'
+
 
 
 "*****************************************************************************
@@ -117,4 +123,3 @@ if filereadable(expand("~/.config/nvim/local_bundles.vim"))
 endif
 
 call plug#end()
-

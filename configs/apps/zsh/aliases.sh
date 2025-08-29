@@ -15,10 +15,23 @@ alias t="vit"
 alias gi="git"
 alias ti="tig"
 alias gbr='git checkout $(git branch | fzf)'
+alias pull="git pull"
+alias push="git push"
+alias add="git add"
+alias gdiff="git diff"
+alias gdif="gdiff"
+alias commit="git commit -m"
+alias checkout="git checkout"
+alias checkoutb="git checkout -b"
+alias restore="git restore"
+alias stash="git stash"
+alias status="git status"
+
 # others covered by zsh plugin
 
 # General Aliases
 alias c="clear"
+alias k="clear"
 alias q="exit"
 alias gs="gst"
 alias s="source"
@@ -55,3 +68,6 @@ alias ls="ls -G"
 alias l="ls -lt"
 alias lc="wc -l"
 
+
+# Searching via terminal
+alias google="ddgr"
