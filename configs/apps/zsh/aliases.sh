@@ -68,6 +68,28 @@ alias ls="ls -G"
 alias l="ls -lt"
 alias lc="wc -l"
 
+alias q="exit"
+alias qq='tmux kill-session -t $(tmux display-message -p "#S")'
+
+
 
 # Searching via terminal
 alias google="ddgr"
+
+# Quick new tmux window in CWD
+alias tn='tmux new-window -c "$PWD"'
+
+# Jump between existing tmux sessions
+alias tj='tmux switch-client -t $(tmux list-sessions -F "#{session_name}" | fzf)'
+
+# Fast grep
+rgf() { rg -n --hidden --glob '!.git' "$@" }
+
+# Git helpers
+gundo() { git reset --hard "$1"; git clean -fd; }
+
+# HTTPie
+hjson() { http "$@" | jq .; }
+
+# Project opener (ts already picks a dir; open code + tmux)
+codehere() { command -v code >/dev/null && code . || true; }
