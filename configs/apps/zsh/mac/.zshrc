@@ -89,3 +89,5 @@ eval "$(luarocks --lua-version=5.4 path --bin)"
 [ -f "$HOME/Development/dotfiles/configs/apps/zsh/aliases.sh" ] && source "$HOME/Development/dotfiles/configs/apps/zsh/aliases.sh"
 [ -f "$HOME/Development/dotfiles/configs/apps/zsh/work_aliases.sh" ] && source "$HOME/Development/dotfiles/configs/apps/zsh/work_aliases.sh"
 [ -f "$HOME/.fzf.zsh" ] && source "$HOME/.fzf.zsh"
+
+eval $(thefuck --alias)

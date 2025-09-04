@@ -11,10 +11,11 @@ I download all of my software using these unless its unavailable.
 - Windows: [Chocolatey](https://chocolatey.org/)
 
 ## Browser
-- [Brave](https://brave.com/)
+- [Vivaldi](https://vivaldi.com)
 
 ## Terminals
-- MacOS: [iterm2](https://iterm2.com/)
+- MacOS: [Ghostty](https://ghostty.org)
+- Linux: [Ghostty](https://ghostty.org)
 - Windows: [Windows Terminal]()
 
 ## Shell Customization (Unix Only)
