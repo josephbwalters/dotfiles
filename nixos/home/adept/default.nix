@@ -5,15 +5,11 @@
   home.stateVersion = "25.05";
 
   programs.starship.enable = true;
-  services.dunst.enable = true;
 
-  home.packages = with pkgs; [ ghostty wofi pavucontrol ];
-
+  # Keep imports lean to avoid double-enabling Hypr/Waybar
   imports = [
     ./dotfiles.nix
     ./session-raw.nix
-    # ./hyprland.nix
-    # ./waybar.nix
   ];
 }
 
