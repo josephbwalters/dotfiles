@@ -36,8 +36,8 @@
       label = [
         {
           text = "  $TIME";
-          font_size = 36;
-          position = "0, 0";
+          font_size = 50;
+          position = "0, 120";
           halign = "center";
           valign = "center";
         }
@@ -51,7 +51,7 @@
         {
           text = "cmd[update:60000] date +\"  %Y-%m-%d\""; # updates every 60s
           font_size = 18;
-          position = "0, -65";
+          position = "0, -70";
           halign = "center";
           valign = "center";
         }
