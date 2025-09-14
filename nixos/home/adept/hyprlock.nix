@@ -26,7 +26,7 @@
         {
           monitor = "";
           size = "300, 40";
-          position = "0, -140";
+          position = "0, -120";
           halign = "center";
           valign = "center";
           rounding = 12;
@@ -44,14 +44,14 @@
         { 
           text = "  $USER";
           font_size = 16; 
-          position = "0, -20";  
+          position = "0, -40";  
           halign = "center"; 
           valign = "center"; 
         }
         {
           text = "cmd[update:60000] date +\"  %Y-%m-%d\""; # updates every 60s
           font_size = 18;
-          position = "0, -40";
+          position = "0, -65";
           halign = "center";
           valign = "center";
         }
