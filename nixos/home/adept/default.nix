@@ -9,8 +9,11 @@
   # Keep imports lean to avoid double-enabling Hypr/Waybar
   imports = [
     ./dotfiles.nix
-    ./session-raw.nix
+    ./keyring.nix
+    ./applets.nix
+    ./hyprland.nix
     ./hyprlock.nix
+    ./notifications.nix
   ];
 }
 
