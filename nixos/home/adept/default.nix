@@ -10,6 +10,7 @@
   imports = [
     ./dotfiles.nix
     ./session-raw.nix
+    ./hyprlock.nix
   ];
 }
 

@@ -71,6 +71,8 @@ in
     forceRun = true;
   };
 
+  security.pam.services.hyprlock = { };
+
 
   fonts.packages = with pkgs; [
     noto-fonts
@@ -84,6 +86,20 @@ in
     cliPkgs
     ++ devPkgs
     ++ desktopPkgs;
+
+
+  networking.firewall = {
+    enable = true;
+    # Example: open Steam Remote Play or game servers as needed
+    # allowedTCPPorts = [ 27036 27037 ];
+    # allowedUDPPorts = [ 27031 27036 ];
+  };
+
+  # Automatic security updates (unattended)
+  # system.autoUpgrade = {
+  #   enable = true;
+  #   allowReboot = false; # set true if you want auto reboots
+  # };
 
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
