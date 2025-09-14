@@ -10,7 +10,7 @@ alias vim="nvim"
 alias tasks="task" # cuz I don't like to think
 alias t="vit"
 
-alias update-desktop = "cd ~/dotfiles/nixos && sudo nixos-rebuild switch --flake .#desktop"
+alias update='nix build ~/dotfiles/nixos#nixosConfigurations.desktop.config.system.build.toplevel && sudo ./result/bin/switch-to-configuration switch'
 
 # Git
 alias gi="git"

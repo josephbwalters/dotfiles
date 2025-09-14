@@ -34,22 +34,28 @@
       ];
 
       label = [
-        { text = "  $USER"; font_size = 16; position = "0, 20";  halign = "center"; valign = "center"; }
         {
-          text = "cmd[update:60000] date +\"  %Y-%m-%d\""; # updates every 60s
-          font_size = 18;
-          position = "0, -70";
+          text = "  $TIME";
+          font_size = 36;
+          position = "0, 0";
           halign = "center";
           valign = "center";
         }
+        { 
+          text = "  $USER";
+          font_size = 16; 
+          position = "0, -20";  
+          halign = "center"; 
+          valign = "center"; 
+        }
         {
-          text = "  $TIME";
+          text = "cmd[update:60000] date +\"  %Y-%m-%d\""; # updates every 60s
           font_size = 18;
           position = "0, -40";
           halign = "center";
           valign = "center";
         }
-      ];
+     ];
     };
   };
 
