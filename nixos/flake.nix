@@ -16,6 +16,7 @@
           ./hosts/${hostName}/configuration.nix
           ./modules/system/common.nix
           ./modules/system/wayland.nix
+          ./modules/system/gaming.nix
           (if nvidia then ./modules/system/nvidia.nix else {})
 
           # Home Manager as a NixOS module

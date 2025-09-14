@@ -11,6 +11,7 @@ let
     wget unzip
     nodejs_24 python310
     asdf-vm
+    luajitPackages.luarocks
   ];
 
   desktopPkgs = with pkgs; [
