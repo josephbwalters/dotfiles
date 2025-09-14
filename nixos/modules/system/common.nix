@@ -16,10 +16,15 @@ let
   desktopPkgs = with pkgs; [
     pavucontrol brightnessctl pamixer
     wl-clipboard grim slurp swappy
-    networkmanagerapplet blueman
+    blueman
 
     ghostty
     vivaldi slack discord obsidian prismlauncher
+
+    pkgs.kdePackages.kwalletmanager
+    pkgs.kdePackages.plasma-nm
+    pkgs.kdePackages.kwallet
+    pkgs.kdePackages.polkit-kde-agent-1
   ];
 in
 {
@@ -51,8 +56,20 @@ in
 
   services.printing.enable = true;
   services.upower.enable = true;
-  services.gnome.gnome-keyring.enable = true;
   security.polkit.enable = true;
+  services.dbus.enable = true;
+
+  services.gnome.gnome-keyring.enable = false;
+  # Use KWallet (PAM unlock at greetd + TTY)
+  security.pam.services.greetd.kwallet = {
+    enable = true;
+    forceRun = true;
+  };
+  security.pam.services.login.kwallet = {
+    enable = true;
+    forceRun = true;
+  };
+
 
   fonts.packages = with pkgs; [
     noto-fonts
