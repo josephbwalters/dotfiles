@@ -1,46 +1,31 @@
+
 { config, pkgs, lib, ... }:
 let
   oos = config.lib.file.mkOutOfStoreSymlink;
   dot = "${config.home.homeDirectory}/dotfiles";
 
-  # Repo paths (adjust if different)
   hyprlandConf  = "${dot}/configs/apps/hypr/hyprland.conf";
   hyprpaperConf = "${dot}/configs/apps/hypr/hyprpaper.conf";
-  waybarConf    = "${dot}/configs/apps/waybar/config.jsonc"; # or .../config
-  waybarCss     = "${dot}/configs/apps/waybar/style.css";    # default stylesheet
+  waybarConf    = "${dot}/configs/apps/waybar/config.jsonc";
+  waybarCss     = "${dot}/configs/apps/waybar/style.css";
 in
 {
-  ############################################
-  ## Hyprland (HM manages session)
-  ############################################
-  wayland.windowManager.hyprland = {
-    enable = true;
-    systemd.enable = true;
-    # NOTE: no extraConfig here (keeps flake eval pure)
-  };
-
-  # Provide your Hypr configs at canonical paths (runtime read by Hyprland)
+  # Place Hypr configs; Hyprland itself is provided/launched by NixOS (greetd)
   xdg.configFile."hypr/hyprland.conf".source  = oos hyprlandConf;
   xdg.configFile."hypr/hyprpaper.conf".source = oos hyprpaperConf;
 
-  ############################################
-  ## Waybar (HM service + your config/css)
-  ############################################
+  # Waybar managed by HM
   programs.waybar = {
     enable = true;
-    systemd.enable = true;
+    systemd.enable = true;  # user service -> graphical-session.target
   };
   xdg.configFile."waybar/config".source    = oos waybarConf;
   xdg.configFile."waybar/style.css".source = oos waybarCss;
 
-  ############################################
-  ## Dunst (HM-managed)
-  ############################################
+  # Dunst via HM (ensure hyprland.conf does NOT also exec-once dunst)
   services.dunst.enable = true;
 
-  ############################################
-  ## nm-applet / blueman / hyprpaper (user services)
-  ############################################
+  # nm-applet / blueman / hyprpaper as user services
   systemd.user.services."nm-applet" = {
     Unit = {
       Description = "NetworkManager Applet";
@@ -52,7 +37,7 @@ in
       Restart = "on-failure";
       RestartSec = 1;
     };
-    Install.WantedBy = [ "hyprland-session.target" ];
+    Install.WantedBy = [ "graphical-session.target" ];
   };
 
   systemd.user.services."blueman-applet" = {
@@ -66,7 +51,7 @@ in
       Restart = "on-failure";
       RestartSec = 1;
     };
-    Install.WantedBy = [ "hyprland-session.target" ];
+    Install.WantedBy = [ "graphical-session.target" ];
   };
 
   systemd.user.services."hyprpaper" = {
@@ -80,12 +65,9 @@ in
       Restart = "on-failure";
       RestartSec = 1;
     };
-    Install.WantedBy = [ "hyprland-session.target" ];
+    Install.WantedBy = [ "graphical-session.target" ];
   };
 
-  ############################################
-  ## Helpers used by your Waybar bindings
-  ############################################
+  # Tools your Waybar binds use
   home.packages = with pkgs; [ btop playerctl pavucontrol wofi ];
 }
-
