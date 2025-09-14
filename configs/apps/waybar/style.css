@@ -1,0 +1,39 @@
+/* ===== Waybar minimal theme ===== */
+@define-color base      #111318;
+@define-color surface   rgba(255,255,255,0.06);
+@define-color text      #e6e6e6;
+@define-color muted     #a0a4b0;
+@define-color accent    #89b4fa;
+@define-color warn      #e5c07b;
+@define-color danger    #e06c75;
+
+window#waybar {
+  background: alpha(@base, 0.85);
+  color: @text;
+  border-bottom: 1px solid alpha(@text, 0.12);
+  font-family: "JetBrainsMono Nerd Font", "Noto Sans", Roboto, sans-serif;
+  font-size: 12px;
+}
+
+#tray, #clock, #cpu, #memory, #network, #pulseaudio, #battery, #mpris {
+  background: @surface;
+  border-radius: 8px;
+  padding: 0 10px;
+  margin: 0 4px;
+}
+
+#workspaces button {
+  background: transparent;
+  color: @text;
+  border-radius: 8px;
+  padding: 0 8px;
+  margin: 4px 4px;
+}
+#workspaces button.active  { background: @accent; color: @base; }
+#workspaces button.urgent  { background: @danger; color: @base; }
+
+#pulseaudio.muted { color: @muted; }
+#battery.warning  { color: @warn; }
+#battery.critical { color: @danger; }
+
+#window { padding: 0 6px; }

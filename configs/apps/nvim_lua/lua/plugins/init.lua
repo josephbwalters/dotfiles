@@ -20,6 +20,7 @@ require("lazy").setup({
   { import = "plugins.navigation" },
   { import = "plugins.indent-blankline" },
   { import = "plugins.glow" },
+  { import = "plugins.copilot" },
 }, {
   ui = { border = "rounded" },
   change_detection = { notify = false },

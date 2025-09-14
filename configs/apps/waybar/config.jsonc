@@ -1,0 +1,87 @@
+[{
+  "height": 28,
+  "spacing": 6,
+
+  "modules-left":  [ "hyprland/workspaces", "hyprland/window" ],
+  "modules-center": [ "clock" ],
+  "modules-right": [ "cpu", "memory", "network", "pulseaudio", "backlight", "battery", "mpris", "tray" ],
+
+  "hyprland/workspaces": {
+    "all-outputs": true,
+    "warp-on-scroll": false,
+    "enable-bar-scroll": true,
+    "disable-scroll-wraparound": true,
+    "active-only": false,
+    "format": "{name}"
+  },
+
+  "hyprland/window": {
+    "format": "{title}",
+    "max-length": 50,
+    "min-length": 12,
+    "all-outputs": true
+  },
+
+  "clock": {
+    "format": "{:%a %b %d  %H:%M}",
+    "tooltip-format": "{:%Y-%m-%d}"
+  },
+
+  "cpu": {
+    "format": " {usage}%",
+    "interval": 2,
+    "tooltip": true,
+    "on-click": "ghostty -e btop"
+  },
+
+  "memory": {
+    "format": " {used:0.1f}G",
+    "interval": 5,
+    "tooltip": true,
+    "on-click": "ghostty -e btop"
+  },
+
+  "network": {
+    "format-wifi": " {essid} {signalStrength}%",
+    "format-ethernet": "󰈀 {ifname}",
+    "format-disconnected": "",
+    "tooltip": true,
+    "on-click": "ghostty -e nmtui"
+  },
+
+  "pulseaudio": {
+    "format": "{icon} {volume}%",
+    "format-muted": "",
+    "format-icons": { "default": [ "", "", "" ] },
+    "on-click": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle",
+    "on-click-right": "pavucontrol",
+    "scroll-step": 5
+  },
+
+  "backlight": {
+    "format": " {percent}%",
+    "on-click": "brightnessctl set 50%"
+  },
+
+  "battery": {
+    "states": { "warning": 30, "critical": 15 },
+    "format": "{capacity}% {icon}",
+    "format-full": "{capacity}% ",
+    "format-charging": "{capacity}% ",
+    "format-icons": [ "", "", "", "", "" ],
+    "tooltip": true
+  },
+
+  "mpris": {
+    "format": "  {status_icon} {artist}",
+    "status-icons": { "playing": "▶", "paused": "⏸", "stopped": "" },
+    "dynamic-len": 40,
+    "interval": 1
+  },
+
+  "tray": {
+    "icon-size": 14,
+    "spacing": 8
+  }
+}]
+
