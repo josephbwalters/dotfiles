@@ -21,6 +21,7 @@ require("lazy").setup({
   { import = "plugins.indent-blankline" },
   { import = "plugins.glow" },
   { import = "plugins.copilot" },
+  { import = "plugins.vim-tmux-navigator" },
 }, {
   ui = { border = "rounded" },
   change_detection = { notify = false },

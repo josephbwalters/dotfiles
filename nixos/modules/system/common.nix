@@ -1,8 +1,9 @@
 { config, pkgs, lib, ... }:
 let
   cliPkgs = with pkgs; [
+    fd
     ripgrep fzf bat tmux zoxide tree tldr neofetch
-    stow
+    stow pay-respects eza
   ];
 
   devPkgs = with pkgs; [
@@ -12,6 +13,7 @@ let
     nodejs_24 python310
     asdf-vm
     luajitPackages.luarocks
+    lua5_4
   ];
 
   desktopPkgs = with pkgs; [
@@ -21,6 +23,8 @@ let
 
     ghostty
     vivaldi slack discord obsidian prismlauncher
+
+    todoist-electron
 
     pkgs.kdePackages.kwalletmanager
     pkgs.kdePackages.plasma-nm

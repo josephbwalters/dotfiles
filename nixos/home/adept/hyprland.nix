@@ -34,4 +34,10 @@ in
     };
     Install.WantedBy = [ "graphical-session.target" ];
   };
+
+  # Theme
+  home.packages = with pkgs; [
+    catppuccin
+    catppuccin-kde
+  ];
 }

@@ -5,6 +5,7 @@
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
+    catppuccin.url = "github:catppuccin/nix";
   };
 
   outputs = { self, nixpkgs, home-manager, ... }:
@@ -33,7 +34,7 @@
   in {
     nixosConfigurations = {
       desktop = mkSystem { hostName = "desktop"; nvidia = true;  };
-      laptop  = mkSystem { hostName = "laptop";  nvidia = false; };
+      laptop  = mkSystem { hostName = "laptop";  nvidia = true; };
     };
   };
 }
