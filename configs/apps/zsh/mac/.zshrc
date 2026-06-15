@@ -53,24 +53,44 @@ alias gl='git log --oneline --graph --decorate --all'
 alias GET='http --follow --timeout 30 --verbose GET'
 
 
+# Cheat sheet
+alias cheat='bash ~/Development/dotfiles/configs/apps/cheatsheet.sh | less -R'
+
 # Jump (zoxide)
 alias zc='z -'
 
 
-#### ThePrimeagen‑style Sessionizer (fzf + tmux) ####
+#### Sessionizer (fzf + tmux) ####
+SESSIONIZE_PATHS=(
+  "$HOME/Development"
+  "$HOME/dotfiles"
+)
+
 sessionize() {
-local dir
-dir=$(fd --type d --hidden --follow --exclude .git . ${1:-$HOME} | fzf --height 50% --reverse) || return
-local name
-name=$(basename "$dir" | tr '.' '-' | tr ' ' '-')
-if tmux has-session -t "$name" 2>/dev/null; then
-tmux switch-client -t "$name"
-else
-tmux new-session -ds "$name" -c "$dir"
-tmux switch-client -t "$name"
-fi
+  local dir
+  dir=$(fd --type d --hidden --follow --exclude .git --max-depth 3 . "${SESSIONIZE_PATHS[@]}" | \
+        fzf --height 50% --reverse) || return
+  local name
+  name=$(basename "$dir" | tr '.' '-' | tr ' ' '-')
+  if tmux has-session -t "$name" 2>/dev/null; then
+    tmux switch-client -t "$name"
+  else
+    tmux new-session -ds "$name" -c "$dir"
+    tmux send-keys -t "$name:0.0" "nvim ." Enter
+    tmux split-window -t "$name:0.0" -v -p 15 -c "$dir"
+    tmux select-pane -t "$name:0.0"
+    tmux switch-client -t "$name"
+  fi
 }
 alias ts='sessionize'
+
+# Fast-switch between existing sessions (no fd scan)
+tsw() {
+  local session
+  session=$(tmux list-sessions -F '#{session_name}' | fzf --height 40% --reverse) || return
+  tmux switch-client -t "$session"
+}
+alias tw='tsw'
 
 
 #### Auto attach to tmux in Ghostty/TTY ####
@@ -83,11 +103,20 @@ fi
 fi
 
 
-eval "$(luarocks --lua-version=5.4 path --bin)"
+eval "$(luarocks --lua-version=5.5 path --bin)"
+
+#### AI tools ####
+[ -f "$HOME/.secrets/gitlab" ] && source "$HOME/.secrets/gitlab"
+
+
 #### Optional: load per-machine aliases ####
 # If your files are named *.sh, source those; otherwise use the dotfiles you actually have.
 [ -f "$HOME/Development/dotfiles/configs/apps/zsh/aliases.sh" ] && source "$HOME/Development/dotfiles/configs/apps/zsh/aliases.sh"
 [ -f "$HOME/Development/dotfiles/configs/apps/zsh/work_aliases.sh" ] && source "$HOME/Development/dotfiles/configs/apps/zsh/work_aliases.sh"
 [ -f "$HOME/.fzf.zsh" ] && source "$HOME/.fzf.zsh"
+
+
+export PATH="${ASDF_DATA_DIR:-$HOME/.asdf}/shims:$PATH"
+
 
 eval $(thefuck --alias)

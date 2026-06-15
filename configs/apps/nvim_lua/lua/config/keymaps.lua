@@ -6,7 +6,7 @@ map("n", "<leader>w", "<cmd>w<cr>", opts)
 map("n", "<leader>q", "<cmd>q<cr>", opts)
 
 -- Clear search highlight
-map("n", "<leader>h", "<cmd>nohlsearch<cr>", opts)
+map("n", "<leader>nh", "<cmd>nohlsearch<cr>", opts)
 
 -- Better window nav
 map("n", "<C-h>", "<C-w>h", opts)
@@ -19,4 +19,7 @@ map("n", "<leader>bn", "<cmd>enew<cr>", opts)
 map("n", "<leader>bd", "<cmd>bd<cr>", opts)
 map("n", "<S-l>", "<cmd>bnext<cr>", opts)
 map("n", "<S-h>", "<cmd>bprevious<cr>", opts)
+
+-- Cheatsheet
+map("n", "<leader>?", "<cmd>Glow ~/Development/dotfiles/configs/apps/nvim_cheatsheet.md<cr>", { noremap = true, silent = true, desc = "Cheatsheet" })
 

@@ -4,7 +4,7 @@ local opt = vim.opt
 opt.number = true
 opt.relativenumber = true
 opt.mouse = "a"
-opt.termguicolors = true            -- replaces legacy t_Co / guioptions usage
+opt.termguicolors = true
 opt.signcolumn = "yes"
 opt.updatetime = 200
 opt.timeoutlen = 400
@@ -12,12 +12,12 @@ opt.hidden = true
 opt.swapfile = false
 opt.scrolloff = 4
 opt.sidescrolloff = 8
-vim.opt.clipboard = "unnamedplus"
+opt.clipboard = "unnamedplus"
 
-vim.opt.foldmethod = "expr"
-vim.opt.foldexpr   = "nvim_treesitter#foldexpr()"
-vim.opt.foldenable = true
-vim.opt.foldlevel  = 99
+opt.foldmethod = "expr"
+opt.foldexpr   = "v:lua.vim.treesitter.foldexpr()"
+opt.foldenable = true
+opt.foldlevel  = 99
 
 -- Indent
 opt.expandtab = true
@@ -36,9 +36,13 @@ opt.splitright = true
 opt.splitbelow = true
 
 -- Performance / wildignore (great for big repos)
-opt.wildignore = { "*.o", "*.a", "__pycache__", "*.pyc", "node_modules", "dist", "build" } -- :contentReference[oaicite:5]{index=5}
+opt.wildignore = { "*.o", "*.a", "__pycache__", "*.pyc", "node_modules", "dist", "build" }
 
--- Colorscheme (gruvbox example; swap to whatever you use)
--- You'll actually load the plugin in plugins/ui.lua; this just picks it.
--- vim.cmd.colorscheme("gruvbox")
+-- Suppress intro message ("NVIM v0.x.x / type :help...")
+opt.shortmess:append("I")
+
+-- Disable unused providers (silences checkhealth warnings)
+vim.g.loaded_perl_provider   = 0
+vim.g.loaded_ruby_provider   = 0
+vim.g.loaded_python3_provider = 0
 

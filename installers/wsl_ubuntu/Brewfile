@@ -14,5 +14,4 @@ brew "yarn"
 brew 'autojump'
 brew 'pyenv'
 brew 'stow'
-brew 'the_silver_searcher'
 brew 'thefuck'

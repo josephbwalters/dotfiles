@@ -1,19 +1,31 @@
 return {
+  -- Animated ASCII splash screen
+  { "Amansingh-afk/milli.nvim", lazy = false, enabled = false },
+
+  -- Dashboard + lazygit float + notifications + smooth scroll + animations + indent guides
   {
-    "goolord/alpha-nvim",
-    dependencies = { "nvim-tree/nvim-web-devicons" },
-    config = function()
-      local alpha = require("alpha")
-      local dashboard = require("alpha.themes.dashboard")
-      dashboard.section.header.val = { "Neovim" }
-      dashboard.section.buttons.val = {
-        dashboard.button("e", "  New file", ":ene <BAR> startinsert <CR>"),
-        dashboard.button("f", "  Find file", ":Telescope find_files<CR>"),
-        dashboard.button("r", "  Recent", ":Telescope oldfiles<CR>"),
-        dashboard.button("q", "  Quit", ":qa<CR>"),
-      }
-      alpha.setup(dashboard.opts)
-    end,
+    "folke/snacks.nvim",
+    priority = 1000,
+    lazy = false,
+    opts = {
+      dashboard = {
+        enabled = true,
+        sections = {
+          { section = "keys",         gap = 1, padding = 1 },
+          { section = "recent_files", limit = 5, padding = 1 },
+          { section = "startup" },
+        },
+      },
+      lazygit   = { enabled = true },
+      notifier  = { enabled = true, timeout = 3000 },
+      scroll    = { enabled = true },
+      animate   = { enabled = true },
+      indent    = { enabled = true },
+    },
+    keys = {
+      { "<leader>gg", function() Snacks.lazygit() end,               desc = "LazyGit" },
+      { "<leader>gB", function() Snacks.gitbrowse() end,             desc = "Git browse" },
+      { "<leader>un", function() Snacks.notifier.show_history() end, desc = "Notifications" },
+    },
   },
 }
-

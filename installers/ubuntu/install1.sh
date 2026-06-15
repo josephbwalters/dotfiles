@@ -11,7 +11,6 @@ apt install -y tldr
 apt install -y autojump
 apt install -y python3-venv
 apt install -y stow
-apt install -y silversearcher-ag
 apt install -y thefuck
 apt install -y postgresql
 apt install -y zsh

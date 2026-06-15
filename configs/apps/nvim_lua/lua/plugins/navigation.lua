@@ -13,7 +13,7 @@ return {
           save_on_toggle = true,
           sync_on_ui_close = true,
           -- each project gets its own list keyed by CWD
-          key = function() return vim.loop.cwd() end,
+          key = function() return vim.uv.cwd() end,
         },
       })
 

@@ -43,7 +43,7 @@ Favorite Colorscheme: [Gruvbox](https://github.com/morhetz/gruvbox) - I literall
 - [tldr](https://tldr.sh/) - man pages but wayyyy better
 - [postman](https://www.postman.com/) - API Manager
 - [FZF](https://github.com/junegunn/fzf) - fuzzy find, basically necessary
-- [The Silver Searcher](https://github.com/ggreer/the_silver_searcher)
+- [ripgrep](https://github.com/BurntSushi/ripgrep) - fast search
 - [Docker](https://www.docker.com/) - Containers are magic
 - [thefuck](https://github.com/nvbn/thefuck) - this is hilarious and actually really useful
 - [SwaggerDocs](https://swagger.io/docs/) - Cuz API docs are important

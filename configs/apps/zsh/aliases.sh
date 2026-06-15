@@ -1,5 +1,8 @@
 #!/bin/zsh
 
+# Brew Updates for Homebrew
+alias brewup="brew update && brew upgrade --greedy && brew cleanup && brew doctor"
+
 # Map everything vi/vim to neovim
 alias editor="nvim"
 alias v="nvim"
@@ -13,7 +16,6 @@ alias t="vit"
 
 # Git
 alias gi="git"
-alias ti="tig"
 alias gbr='git checkout $(git branch | fzf)'
 alias pull="git pull"
 alias push="git push"
@@ -43,7 +45,6 @@ alias randhex="openssl rand -hex"
 alias dev="cd ~/Development"
 alias dotf="cd ~/Development/dotfiles"
 alias r="ruby"
-alias isup="is-up"
 alias f="fuck" # iz dirty w0rd and I use this at work (O_O)
 
 alias pipr="pip install -r requirements.txt"
@@ -72,11 +73,6 @@ alias lc="wc -l"
 alias q="exit"
 alias qq='tmux kill-session -t $(tmux display-message -p "#S")'
 
-
-
-# Searching via terminal
-alias google="ddgr"
-
 # Quick new tmux window in CWD
 alias tn='tmux new-window -c "$PWD"'
 
@@ -88,9 +84,6 @@ rgf() { rg -n --hidden --glob '!.git' "$@" }
 
 # Git helpers
 gundo() { git reset --hard "$1"; git clean -fd; }
-
-# HTTPie
-hjson() { http "$@" | jq .; }
 
 # Project opener (ts already picks a dir; open code + tmux)
 codehere() { command -v code >/dev/null && code . || true; }

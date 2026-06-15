@@ -1,7 +1,7 @@
 -- Bootstrap lazy.nvim
 -- From https://github.com/folke/lazy.nvim
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
-if not vim.loop.fs_stat(lazypath) then
+if not vim.uv.fs_stat(lazypath) then
   vim.fn.system({ "git", "clone", "--filter=blob:none",
     "https://github.com/folke/lazy.nvim.git", "--branch=stable", lazypath })
 end
@@ -18,7 +18,7 @@ require("lazy").setup({
   { import = "plugins.start" },
   { import = "plugins.lint_format" },
   { import = "plugins.navigation" },
-  { import = "plugins.indent-blankline" },
+  { import = "plugins.ai" },
   { import = "plugins.glow" },
 }, {
   ui = { border = "rounded" },

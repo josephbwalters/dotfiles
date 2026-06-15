@@ -24,7 +24,7 @@ return {
         json = { "jsonlint" },
         yaml = { "yamllint" },
       }
-      vim.api.nvim_create_autocmd({ "BufWritePost", "InsertLeave", "TextChanged" }, {
+      vim.api.nvim_create_autocmd({ "BufWritePost", "InsertLeave" }, {
         callback = function() lint.try_lint() end,
       })
     end,

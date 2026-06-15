@@ -11,7 +11,7 @@ return {
     ensure_installed = {
       "lua", "vim", "vimdoc", "json", "yaml",
       "tsx", "typescript", "javascript", "markdown",
-      "python",   -- 👈 add this
+      "python", "regex", "bash",
     },
   },
   config = function(_, opts)
