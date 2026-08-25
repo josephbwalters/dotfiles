@@ -1,2 +1,0 @@
-# WSL Ubuntu Setup
-TODO

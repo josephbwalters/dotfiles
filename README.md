@@ -1,5 +1,98 @@
 # dotfiles
-Each folder has a README and/or a script that outlines what to do.
+
+## Setup
+
+macOS or Linux (Debian/Ubuntu, Arch/CachyOS): clone this repo, then run
+the one bootstrap script.
+
+```sh
+git clone git@gitlab.com:josephbwalters/dotfiles.git ~/Development/dotfiles
+cd ~/Development/dotfiles
+./bootstrap.sh
+```
+
+`bootstrap.sh` auto-detects the OS/distro and, idempotently:
+1. Installs Homebrew (+ build prerequisites on Linux) and everything in
+   [`bootstrap/Brewfile.mac`](bootstrap/Brewfile.mac) or
+   [`bootstrap/Brewfile.linux`](bootstrap/Brewfile.linux) (each includes the
+   shared [`bootstrap/Brewfile.common`](bootstrap/Brewfile.common) via
+   `eval File.read(...)`, since a Brewfile is just Ruby and Homebrew Bundle
+   has no native include directive).
+2. Installs Node/Ruby/Python via [asdf](https://asdf-vm.com/) and the
+   global npm/gem/pip packages in `bootstrap/{package.json,Gemfile,requirements.txt}`.
+3. Symlinks `~/.local/share/chezmoi` to this repo and runs `chezmoi apply`,
+   which renders and places `~/.zshrc` (OS-aware `dot_zshrc.tmpl`),
+   `~/.config/nvim` (`dot_config/nvim/`), and `~/.config/zsh/*` (`dot_config/zsh/`).
+
+`bootstrap.sh`/`bootstrap/`, `Gemfile*`, `venv/`, `.claude/`, and `reference/`
+(non-templated assets like the cheatsheet, see below) are excluded from
+chezmoi deployment via `.chezmoiignore` - they're repo tooling, not dotfiles.
+
+Once set up, day-to-day usage from anywhere is just:
+```sh
+chezmoi diff     # preview changes after editing this repo
+chezmoi apply    # deploy them
+chezmoi update   # git pull + apply in one step
+```
+
+### Windows
+
+Fully manual today - no script, no dotfile deployment. Sane defaults +
+daily-driver software via [Chocolatey](https://chocolatey.org/install)
+([GUI option](https://docs.chocolatey.org/en-us/chocolatey-gui/setup/installation) also available):
+
+```bash
+# Package managers
+choco feature enable -n allowGlobalConfirmation
+choco install chocolateygui
+
+# Development
+choco install vscode
+choco install github-desktop
+choco install pyenv-win
+choco install docker-desktop
+choco install git
+choco install microsoft-windows-terminal
+choco install nvm
+choco install yarn
+
+# Databases
+choco install postgresql
+choco install pgadmin4
+
+# Diagramming
+choco install visualparadigm-ce
+
+# Browser
+choco install brave
+
+# Comms
+choco install discord
+choco install slack
+choco install zoom
+
+# Games
+choco install steam-client
+choco install osu
+choco install origin
+choco install epicgameslauncher
+
+# Content Creation
+choco install spotify
+choco install obs-studio
+choco install gimp
+choco install vlc
+
+# Cloud Storage
+choco install googledrive
+choco install dropbox
+
+# Fonts
+choco install firacode
+
+# Other
+choco install 7zip
+```
 
 # Software
 
@@ -19,14 +112,13 @@ I download all of my software using these unless its unavailable.
 - Windows: [Windows Terminal]()
 
 ## Shell Customization (Unix Only)
-Shell: [Zsh](http://zsh.sourceforge.net/) with [Oh My Zsh](https://ohmyz.sh/) and [Powerlevel10k](https://github.com/romkatv/powerlevel10k)
+Shell: [Zsh](http://zsh.sourceforge.net/) with [Starship](https://starship.rs/) as the prompt
 
 Favorite Colorscheme: [Gruvbox](https://github.com/morhetz/gruvbox) - I literally use this in everything
 
 ## Software Version Manager
-- Node: [nvm](https://github.com/nvm-sh/nvm)
-- Ruby: [rbenv](https://github.com/rbenv/rbenv)
-- Python: [pyenv](https://github.com/pyenv/pyenv) + pyenv-win
+- MacOS/Linux: [asdf](https://asdf-vm.com/) for Node, Ruby, and Python
+- Windows: pyenv-win
 
 ## IDEs and Editors:
 1. [VSCode](https://code.visualstudio.com/) - My goto GUI editor
@@ -45,20 +137,11 @@ Favorite Colorscheme: [Gruvbox](https://github.com/morhetz/gruvbox) - I literall
 - [FZF](https://github.com/junegunn/fzf) - fuzzy find, basically necessary
 - [ripgrep](https://github.com/BurntSushi/ripgrep) - fast search
 - [Docker](https://www.docker.com/) - Containers are magic
-- [thefuck](https://github.com/nvbn/thefuck) - this is hilarious and actually really useful
 - [SwaggerDocs](https://swagger.io/docs/) - Cuz API docs are important
-- [TaskWarrior](https://github.com/GothenburgBitFactory/taskwarrior)
-- [TimeWarrior](https://github.com/GothenburgBitFactory/timewarrior)
-- [VIT](https://github.com/scottkosty/vit)
-- [TaskWarrior Pomodoro](https://github.com/coddingtonbear/taskwarrior-pomodoro)
-- [Task-Time Hook](https://github.com/kostajh/taskwarrior-time-tracking-hook)
 - [tig](https://github.com/jonas/tig) - ez git history
-- [terjira](https://github.com/keepcosmos/terjira)
-- [autojump](https://github.com/wting/autojump) - very useful
+- [zoxide](https://github.com/ajeetdsouza/zoxide) - jump to frecent directories
 - [is-up](https://github.com/sindresorhus/is-up-cli)
-- [Task Vim](https://github.com/framallo/taskwarrior.vim) - if I need it
 - [VimWiki](https://github.com/vimwiki/vimwiki) - if I want it
-- [TaskVimWiki](https://github.com/teranex/vimwiki-tasks) - if I want it
 
 ## Useful Links:
 - [Regex Tester](https://regexr.com/) - cuz regex is hard

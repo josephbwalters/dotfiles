@@ -1,0 +1,27 @@
+# Shared across every OS's Brewfile - included via `eval File.read(...)`
+# since the Brewfile format is just Ruby, and Homebrew Bundle has no
+# native include/import directive.
+
+# Shell / prompt
+brew "starship"
+brew "zsh"
+
+# CLI tools used directly in .zshrc / aliases.sh
+brew "asdf"
+brew "bat"
+brew "chezmoi"
+brew "direnv"
+brew "eza"
+brew "fd"
+brew "fzf"
+brew "git"
+brew "htop"
+brew "luarocks"
+brew "neofetch"
+brew "neovim"
+brew "ripgrep"
+brew "tig"
+brew "tldr"
+brew "tmux"
+brew "yarn"
+brew "zoxide"

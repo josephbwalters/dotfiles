@@ -1,0 +1,22 @@
+eval File.read(File.join(__dir__, "Brewfile.common"))
+
+tap "homebrew/bundle"
+tap "homebrew/cask"
+tap "homebrew/cask-fonts"
+
+# Apps
+cask "brave-browser"
+cask "firefox-developer-edition"
+cask "ghostty"
+cask "google-chrome"
+cask "istat-menus"
+cask "jetbrains-toolbox"
+cask "postman"
+cask "slack"
+cask "zoomus"
+
+# Fonts
+cask "font-fira-code"
+cask "font-jetbrains-mono"
+cask "font-cascadia-mono"
+cask "font-3270-nerd-font"

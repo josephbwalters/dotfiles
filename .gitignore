@@ -1,3 +1,6 @@
 .DS_Store
 Gemfile.lock
 google-chrome-stable_current_amd64.deb
+venv/
+Brewfile.lock.json
+.claude/

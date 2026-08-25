@@ -1,6 +1,13 @@
+{{- $isDarwin := eq .chezmoi.os "darwin" -}}
 #### Paths (put sbin once) ####
-export PATH="/usr/local/sbin:/usr/local/bin:/opt/homebrew/bin:$HOME/.local/bin:$PATH"
-
+{{ if $isDarwin -}}
+# Apple Silicon uses /opt/homebrew, Intel uses /usr/local - source whichever exists
+[ -x /opt/homebrew/bin/brew ] && eval "$(/opt/homebrew/bin/brew shellenv)"
+[ -x /usr/local/bin/brew ] && eval "$(/usr/local/bin/brew shellenv)"
+{{ else -}}
+[ -x /home/linuxbrew/.linuxbrew/bin/brew ] && eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+{{ end -}}
+export PATH="$HOME/.local/bin:$PATH"
 
 #### History ####
 HISTFILE=$HOME/.zsh_history
@@ -15,7 +22,6 @@ bindkey -e # emacs keys; change to -v for vim if you prefer
 
 
 #### Prompt (Starship) ####
-# If you prefer Powerlevel10k, comment these two lines and use your p10k setup instead.
 eval "$(starship init zsh)"
 export STARSHIP_CONFIG="$HOME/.config/starship.toml"
 
@@ -41,7 +47,6 @@ alias mv='mv -i'
 
 # Git shortcuts
 alias g='git'
-# alias gs='git status -sb'
 alias ga='git add -A'
 alias gc='git commit -v'
 alias gco='git checkout'
@@ -54,7 +59,7 @@ alias GET='http --follow --timeout 30 --verbose GET'
 
 
 # Cheat sheet
-alias cheat='bash ~/Development/dotfiles/configs/apps/cheatsheet.sh | less -R'
+alias cheat='bash ~/Development/dotfiles/reference/cheatsheet.sh | less -R'
 
 # Jump (zoxide)
 alias zc='z -'
@@ -93,30 +98,16 @@ tsw() {
 alias tw='tsw'
 
 
-#### Auto attach to tmux in Ghostty/TTY ####
-if command -v tmux >/dev/null 2>&1; then
-# do nothing if already inside tmux or in an SSH forced command etc.
-if [ -z "$TMUX" ] && [ -t 1 ]; then
-# attach to last session, or create a base one
-tmux attach -t base 2>/dev/null || tmux new -s base
-fi
-fi
-
-
 eval "$(luarocks --lua-version=5.5 path --bin)"
 
 #### AI tools ####
 [ -f "$HOME/.secrets/gitlab" ] && source "$HOME/.secrets/gitlab"
 
 
-#### Optional: load per-machine aliases ####
-# If your files are named *.sh, source those; otherwise use the dotfiles you actually have.
-[ -f "$HOME/Development/dotfiles/configs/apps/zsh/aliases.sh" ] && source "$HOME/Development/dotfiles/configs/apps/zsh/aliases.sh"
-[ -f "$HOME/Development/dotfiles/configs/apps/zsh/work_aliases.sh" ] && source "$HOME/Development/dotfiles/configs/apps/zsh/work_aliases.sh"
+#### Per-machine aliases ####
+[ -f "$HOME/.config/zsh/aliases.sh" ] && source "$HOME/.config/zsh/aliases.sh"
+[ -f "$HOME/.config/zsh/work_aliases.sh" ] && source "$HOME/.config/zsh/work_aliases.sh"
 [ -f "$HOME/.fzf.zsh" ] && source "$HOME/.fzf.zsh"
 
 
 export PATH="${ASDF_DATA_DIR:-$HOME/.asdf}/shims:$PATH"
-
-
-eval $(thefuck --alias)

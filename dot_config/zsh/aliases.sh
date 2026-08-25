@@ -9,11 +9,6 @@ alias v="nvim"
 alias vi="nvim"
 alias vim="nvim"
 
-# Tasks
-alias tasks="task" # cuz I don't like to think
-alias t="vit"
-
-
 # Git
 alias gi="git"
 alias gbr='git checkout $(git branch | fzf)'
@@ -38,14 +33,13 @@ alias q="exit"
 alias gs="gst"
 alias gst="git status"
 alias s="source"
-alias zc="v ~/.zshrc"
+alias zrc="v ~/.zshrc" # zc is taken by zoxide's "jump back" in mac/.zshrc
 alias rld="s ~/.zshrc"
-alias vc="v ~/.config/nvim/init.vim"
+alias vc="v ~/.config/nvim/init.lua"
 alias randhex="openssl rand -hex"
 alias dev="cd ~/Development"
 alias dotf="cd ~/Development/dotfiles"
 alias r="ruby"
-alias f="fuck" # iz dirty w0rd and I use this at work (O_O)
 
 alias pipr="pip install -r requirements.txt"
 alias mvenv="python3 -m venv venv"
@@ -66,11 +60,9 @@ alias o="open ."
 alias desk="cd ~/Desktop"
 alias down="cd ~/Downloads"
 alias mkd="mkdir"
-alias ls="ls -G"
-alias l="ls -lt"
+alias l="ls -lt" # eza's ls alias (mac/.zshrc) already applies here
 alias lc="wc -l"
 
-alias q="exit"
 alias qq='tmux kill-session -t $(tmux display-message -p "#S")'
 
 # Quick new tmux window in CWD
