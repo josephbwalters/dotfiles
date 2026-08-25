@@ -18,7 +18,7 @@ cd ~/Development/dotfiles
    shared [`bootstrap/Brewfile.common`](bootstrap/Brewfile.common) via
    `eval File.read(...)`, since a Brewfile is just Ruby and Homebrew Bundle
    has no native include directive).
-2. Installs Node/Ruby/Python via [asdf](https://asdf-vm.com/) and the
+2. Installs Node/Ruby/Python via [mise](https://mise.jdx.dev/) and the
    global npm/gem/pip packages in `bootstrap/{package.json,Gemfile,requirements.txt}`.
 3. Symlinks `~/.local/share/chezmoi` to this repo and runs `chezmoi apply`,
    which renders and places `~/.zshrc` (OS-aware `dot_zshrc.tmpl`),
@@ -34,6 +34,18 @@ chezmoi diff     # preview changes after editing this repo
 chezmoi apply    # deploy them
 chezmoi update   # git pull + apply in one step
 ```
+
+## Updating
+
+```sh
+./update.sh
+```
+
+Detects the OS/distro and upgrades everything for it in one go. **macOS**:
+`brew update && brew upgrade --greedy && brew cleanup && brew doctor`, then
+`mise plugins update && mise upgrade`, then `chezmoi update` (pulls this repo and
+re-applies). **Linux (Debian/Ubuntu, Arch/CachyOS)**: stubbed for now -
+exits with a message pointing at `update.sh` until that gets filled in.
 
 ### Windows
 
@@ -117,7 +129,7 @@ Shell: [Zsh](http://zsh.sourceforge.net/) with [Starship](https://starship.rs/) 
 Favorite Colorscheme: [Gruvbox](https://github.com/morhetz/gruvbox) - I literally use this in everything
 
 ## Software Version Manager
-- MacOS/Linux: [asdf](https://asdf-vm.com/) for Node, Ruby, and Python
+- MacOS/Linux: [mise](https://mise.jdx.dev/) for Node, Ruby, and Python
 - Windows: pyenv-win
 
 ## IDEs and Editors:
@@ -138,7 +150,6 @@ Favorite Colorscheme: [Gruvbox](https://github.com/morhetz/gruvbox) - I literall
 - [ripgrep](https://github.com/BurntSushi/ripgrep) - fast search
 - [Docker](https://www.docker.com/) - Containers are magic
 - [SwaggerDocs](https://swagger.io/docs/) - Cuz API docs are important
-- [tig](https://github.com/jonas/tig) - ez git history
 - [zoxide](https://github.com/ajeetdsouza/zoxide) - jump to frecent directories
 - [is-up](https://github.com/sindresorhus/is-up-cli)
 - [VimWiki](https://github.com/vimwiki/vimwiki) - if I want it

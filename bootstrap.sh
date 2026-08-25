@@ -1,7 +1,7 @@
 #!/bin/bash
 # One-line setup: ./bootstrap.sh
 # Detects OS, installs system packages (Homebrew + Brewfile), language
-# runtimes (asdf), global npm/gem/pip packages, then deploys dotfiles
+# runtimes (mise), global npm/gem/pip packages, then deploys dotfiles
 # via chezmoi. Safe to re-run - every step is idempotent.
 set -euo pipefail
 
@@ -64,12 +64,9 @@ esac
 echo '==> Installing packages from Brewfile'
 brew bundle --file="$BREWFILE"
 
-echo '==> Installing language runtimes via asdf'
-for plugin in nodejs ruby python; do
-  asdf plugin add "$plugin" 2>/dev/null || true
-  asdf install "$plugin" latest
-  asdf global "$plugin" latest
-done
+echo '==> Installing language runtimes via mise'
+mise use --global node@latest ruby@latest python@latest
+eval "$(mise activate bash)"
 
 echo '==> Installing global npm/yarn packages'
 GLOBAL_PKGS=$(node -pe "Object.keys(require('$BOOTSTRAP/package.json').dependencies).join(' ')")

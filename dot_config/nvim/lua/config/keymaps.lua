@@ -21,5 +21,5 @@ map("n", "<S-l>", "<cmd>bnext<cr>", opts)
 map("n", "<S-h>", "<cmd>bprevious<cr>", opts)
 
 -- Cheatsheet
-map("n", "<leader>?", "<cmd>Glow ~/Development/dotfiles/configs/apps/nvim_cheatsheet.md<cr>", { noremap = true, silent = true, desc = "Cheatsheet" })
+map("n", "<leader>?", "<cmd>Glow ~/Development/dotfiles/reference/nvim_cheatsheet.md<cr>", { noremap = true, silent = true, desc = "Cheatsheet" })
 

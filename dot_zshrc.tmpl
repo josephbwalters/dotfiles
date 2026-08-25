@@ -110,4 +110,4 @@ eval "$(luarocks --lua-version=5.5 path --bin)"
 [ -f "$HOME/.fzf.zsh" ] && source "$HOME/.fzf.zsh"
 
 
-export PATH="${ASDF_DATA_DIR:-$HOME/.asdf}/shims:$PATH"
+eval "$(mise activate zsh)"

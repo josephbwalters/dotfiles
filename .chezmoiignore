@@ -1,5 +1,6 @@
 bootstrap
 bootstrap.sh
+update.sh
 README.md
 Gemfile
 Gemfile.lock

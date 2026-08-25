@@ -60,7 +60,7 @@ alias o="open ."
 alias desk="cd ~/Desktop"
 alias down="cd ~/Downloads"
 alias mkd="mkdir"
-alias l="ls -lt" # eza's ls alias (mac/.zshrc) already applies here
+alias l="ls -l --sort=newest" # eza's ls alias (mac/.zshrc) already applies here
 alias lc="wc -l"
 
 alias qq='tmux kill-session -t $(tmux display-message -p "#S")'
