@@ -1,0 +1,16 @@
+onboarding = false
+[keys]
+prefix = "ctrl+space"
+
+[[keys.command]]
+key = "prefix+p"
+type = "plugin_action"
+command = "hota911.command-palette.open"
+description = "Command palette"
+
+[ui.toast]
+delivery = "herdr"
+
+[theme]
+name = "catppuccin"
+auto_switch = false

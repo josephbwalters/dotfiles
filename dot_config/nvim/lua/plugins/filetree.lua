@@ -9,7 +9,18 @@ return {
     },
     cmd = { "Neotree" },
     keys = {
-      { "<leader>e", "<cmd>Neotree toggle left<cr>", desc = "Explorer" },
+      {
+        "<leader>e",
+        function()
+          if vim.bo.filetype == "snacks_dashboard" then
+            -- snacks fires BufDelete + BufWipeout on its bufhidden=wipe buffer and
+            -- tries to delete its augroup both times; pcall swallows the harmless 2nd error
+            pcall(vim.cmd, "enew")
+          end
+          vim.cmd("Neotree toggle left")
+        end,
+        desc = "Explorer",
+      },
     },
     opts = {
       filesystem = {

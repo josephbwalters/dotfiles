@@ -4,7 +4,7 @@
 alias brewup="brew update && brew upgrade --greedy && brew cleanup && brew doctor"
 
 # Map everything vi/vim to neovim
-alias editor="nvim"
+alias edit="hx"
 alias v="nvim"
 alias vi="nvim"
 alias vim="nvim"

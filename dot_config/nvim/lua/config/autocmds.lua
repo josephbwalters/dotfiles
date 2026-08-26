@@ -3,6 +3,14 @@ local acmd = vim.api.nvim_create_autocmd
 
 local mygroup = aug("MyAutocmds", { clear = true })
 
+-- snacks.nvim's dashboard registers one callback for both BufDelete and BufWipeout
+-- on its bufhidden=wipe buffer; both fire on close, so the 2nd nvim_del_augroup_by_id
+-- call always errors on an already-deleted group. Silence that specific no-op failure.
+local nvim_del_augroup_by_id = vim.api.nvim_del_augroup_by_id
+vim.api.nvim_del_augroup_by_id = function(id)
+  pcall(nvim_del_augroup_by_id, id)
+end
+
 -- milli animated splash on startup, rotating every 30s, then snacks dashboard
 -- Press <Enter>, <q>, or <Esc> to skip to the dashboard at any time
 acmd("VimEnter", {
