@@ -22,7 +22,8 @@ cd ~/Development/dotfiles
    global npm/gem/pip packages in `bootstrap/{package.json,Gemfile,requirements.txt}`.
 3. Symlinks `~/.local/share/chezmoi` to this repo and runs `chezmoi apply`,
    which renders and places `~/.zshrc` (OS-aware `dot_zshrc.tmpl`),
-   `~/.config/nvim` (`dot_config/nvim/`), and `~/.config/zsh/*` (`dot_config/zsh/`).
+   `~/.config/nvim` (`dot_config/nvim/`), `~/.config/helix`, `~/.config/herdr`,
+   `~/.config/yazi`, and `~/.config/zsh/*` (`dot_config/zsh/`).
 
 `bootstrap.sh`/`bootstrap/`, `Gemfile*`, `venv/`, `.claude/`, and `reference/`
 (non-templated assets like the cheatsheet, see below) are excluded from
@@ -134,6 +135,7 @@ Favorite Colorscheme: [Gruvbox](https://github.com/morhetz/gruvbox) - I literall
 
 ## IDEs and Editors:
 1. [VSCode](https://code.visualstudio.com/) - My goto GUI editor
+1. [Helix](https://helix-editor.com/) - my terminal editor, `dot_config/helix/config.toml` (catppuccin_macchiato theme); also wired up as [Yazi](https://yazi-rs.github.io/)'s file opener (`dot_config/yazi/yazi.toml`)
 1. [NeoVim](https://neovim.io/) - configured initially with [vim-bootstrap](https://github.com/editor-bootstrap/vim-bootstrap) and tweaked to my liking
 1. [JetBrains IDEs](https://www.jetbrains.com/) - If I want an IDE for some reason these are the best IMO
    NOTE: I manage JetBrains IDEs through the [JetBrains Toolbox](https://www.jetbrains.com/toolbox/app/) after installing it through brew
@@ -153,6 +155,8 @@ Favorite Colorscheme: [Gruvbox](https://github.com/morhetz/gruvbox) - I literall
 - [zoxide](https://github.com/ajeetdsouza/zoxide) - jump to frecent directories
 - [is-up](https://github.com/sindresorhus/is-up-cli)
 - [VimWiki](https://github.com/vimwiki/vimwiki) - if I want it
+- [Yazi](https://yazi-rs.github.io/) - terminal file manager, opens files in Helix
+- [herdr](https://herdr.dev) - agent multiplexer that lives in the terminal
 
 ## Useful Links:
 - [Regex Tester](https://regexr.com/) - cuz regex is hard

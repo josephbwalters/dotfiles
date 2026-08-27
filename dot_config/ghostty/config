@@ -1,0 +1,18 @@
+# # Make Option keys send Alt for tmux/cli apps
+# macos-option-as-alt = both
+#
+#
+# # Keep the window simple & fast
+# confirm-close = false
+# window-decoration = title-and-resize
+#
+#
+# # Font & rendering (adjust to taste)
+# font-size = 14
+#
+#
+# # Shell (let .zshrc handle tmux auto-attach)
+# shell = /bin/zsh
+
+font-family = "JetBrainsMono Nerd Font"
+theme = catppuccin-macchiato.conf
