@@ -1,4 +1,9 @@
-[opener]
-edit = [
-	{ run = 'hx %s', desc = "Edit with helix", block = true, for = "unix" },
-]
+# [opener]
+# edit = [
+# 	{ run = 'hx %s', desc = "Edit with helix", block = true, for = "unix" },
+# ]
+
+# [open]
+# rules = [
+# 	{ mime = "folder/*", use = [ "open", "reveal" ] },
+# ]
