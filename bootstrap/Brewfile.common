@@ -3,6 +3,7 @@
 # native include/import directive.
 
 tap "hashicorp/tap"
+tap "bjarneo/cliamp"
 
 # Shell / prompt
 brew "starship"
@@ -12,6 +13,7 @@ brew "zsh"
 brew "bat"
 brew "btop"
 brew "chezmoi"
+brew "cliamp"
 brew "coreutils"
 brew "direnv"
 brew "eza"
@@ -38,6 +40,7 @@ brew "pre-commit"
 brew "ripgrep"
 brew "shellcheck"
 brew "tcl-tk"
+brew "tealdeer"
 brew "tmux"
 brew "hashicorp/tap/terraform"
 brew "yarn"

@@ -10,6 +10,7 @@ cask "google-chrome"
 cask "obsidian"
 cask "slack"
 cask "visual-studio-code"
+cask "zen-browser"
 cask "zoom"
 
 # Fonts
